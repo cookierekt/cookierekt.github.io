@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birkanwar Singh - Embedded Systems Engineer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Failsafe: Hide terminal loader after 3 seconds no matter what happens */
+        #terminal-loader {
+            animation: autoHideLoader 3s forwards;
+        }
+        
+        @keyframes autoHideLoader {
+            0% { opacity: 1; pointer-events: auto; z-index: 10001; }
+            85% { opacity: 1; pointer-events: auto; z-index: 10001; }
+            100% { opacity: 0; pointer-events: none; z-index: -1; }
+        }
+        
+        /* Additional failsafe - hide after 3 seconds using CSS */
+        #terminal-loader.css-hide {
+            display: none !important;
+        }
+        
+        /* Ensure main content is visible and properly positioned */
+        .navbar, .hero, .about, .experience, .skills, .projects, .contact, .footer {
+            position: relative !important;
+            z-index: 1 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
+        }
+        
+        /* Force specific sections to be visible */
+        section#about, section#experience, section#skills, section#projects, section#contact {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        
+        /* Override any animations or transforms that might hide content */
+        .experience, .skills, .projects {
+            transform: none !important;
+            animation: none !important;
+            transition: none !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: static !important;
+            height: auto !important;
+            width: 100% !important;
+        }
+        
+        /* Ensure containers and grids are visible */
+        .experience-grid, .skills-grid, .projects-grid {
+            display: grid !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Force all cards to be visible */
+        .experience-card, .skill-category, .project-card {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Force body to be visible */
+        body {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+        }
+    </style>
+    <script>
+        // Immediate failsafe - hide loader after 3 seconds no matter what
+        setTimeout(function() {
+            const loader = document.getElementById('terminal-loader');
+            if (loader) {
+                loader.classList.add('css-hide');
+                console.log('Failsafe: Terminal loader hidden by CSS after 3 seconds');
+            }
+            
+            // Ensure main content is visible
+            const sections = document.querySelectorAll('.navbar, .hero, .about, .experience, .skills, .projects, .contact, .footer');
+            sections.forEach(section => {
+                if (section) {
+                    section.style.display = 'block';
+                    section.style.visibility = 'visible';
+                    section.style.opacity = '1';
+                    section.style.position = 'relative';
+                    section.style.zIndex = '1';
+                }
+            });
+            
+            // Also target sections by ID
+            const sectionIds = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
+            sectionIds.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    section.style.display = 'block';
+                    section.style.visibility = 'visible';
+                    section.style.opacity = '1';
+                    section.style.position = 'relative';
+                    section.style.zIndex = '1';
+                    console.log(`Section ${id} forced visible`);
+                }
+            });
+            
+            console.log('Main content visibility forced');
+        }, 3000);
+        
+        // Additional immediate fix - run as soon as DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded - forcing section visibility');
+            
+            // Force all sections visible immediately
+            const allSections = document.querySelectorAll('section, .experience, .skills, .projects, .experience-grid, .skills-grid, .projects-grid');
+            allSections.forEach(el => {
+                if (el) {
+                    el.style.display = el.tagName === 'SECTION' ? 'block' : (el.classList.contains('grid') ? 'grid' : 'block');
+                    el.style.visibility = 'visible';
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                    el.style.animation = 'none';
+                    el.style.transition = 'none';
+                    console.log('Made visible:', el.className || el.id || el.tagName);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Terminal Loading Screen -->
+    <div id="terminal-loader">
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="terminal-button red"></div>
+                    <div class="terminal-button yellow"></div>
+                    <div class="terminal-button green"></div>
+                </div>
+                <div class="terminal-title">portfolio.exe - Terminal</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="prompt">root@portfolio:~$</span>
+                    <span class="command">initializing_futuristic_portfolio.sh</span>
+                </div>
+                <div class="terminal-output">
+                    <div class="load-line">Loading quantum processors... <span class="status">✓</span></div>
+                    <div class="load-line">Activating holographic display... <span class="status">✓</span></div>
+                    <div class="load-line">Establishing neural networks... <span class="status">✓</span></div>
+                    <div class="load-line">Calibrating neon emissions... <span class="status">✓</span></div>
+                    <div class="load-line">Synchronizing glassmorphism... <span class="status">✓</span></div>
+                    <div class="load-line final-line">Portfolio ready. Welcome to the future! <span class="status blink">█</span></div>
+                    <div class="load-line" style="margin-top: 1rem; text-align: center; opacity: 0.7; font-size: 0.9rem;">
+                        <span id="continue-text">Loading complete! Entering in <span id="countdown">2</span>s...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-background"></div>
+    
+    <!-- Code Rain Background -->
+    <div id="code-rain-background"></div>
+    
+    <!-- Performance Stats -->
+    <div id="perf-stats">
+        <div class="stat-item">
+            <span class="stat-label">FPS:</span>
+            <span class="stat-value" id="fps-counter">60</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Load:</span>
+            <span class="stat-value" id="load-time">0ms</span>
+        </div>
+    </div>
+    
+    <!-- Floating Navigation Mini -->
+    <div id="floating-nav">
+        <div class="nav-indicator" data-section="home">🏠</div>
+        <div class="nav-indicator" data-section="about">👤</div>
+        <div class="nav-indicator" data-section="experience">💼</div>
+        <div class="nav-indicator" data-section="skills">⚡</div>
+        <div class="nav-indicator" data-section="projects">🚀</div>
+        <div class="nav-indicator" data-section="contact">📧</div>
+    </div>
+    
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <!-- Resume Download Button -->
+    <div class="resume-download">
+        <button class="resume-btn">
+            <i class="fas fa-download"></i>
+            <span>Download Resume</span>
+            <div class="download-progress"></div>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Birkanwar Singh</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Birkanwar Singh</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    <span id="typing-text">Lead Embedded Systems Engineer</span>
+                    <span class="cursor">|</span>
+                </h2>
+                <p class="hero-description">
+                    Lead Embedded Systems Engineer with 4+ years of experience developing smart IoT solutions and embedded systems. 
+                    Specialized in ESP32/STM32, FreeRTOS/Zephyr, and PCB design with expertise in 
+                    C/C++, wireless communications, and hardware-software integration for 30,000+ deployed units.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-image">👨‍💻</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a Mechatronic Systems Engineering graduate from Simon Fraser University with over 4 years of experience 
+                        in embedded systems development. Currently working as Lead Embedded Systems Engineer at Sepura Home, 
+                        I specialize in IoT solutions, RTOS development, and hardware-software integration for 30,000+ deployed units.
+                    </p>
+                    <p>
+                        My expertise includes ESP32/STM32 microcontroller development, FreeRTOS/Zephyr programming, PCB design with Altium/KiCad, 
+                        and implementing complex embedded systems for smart home automation, parking detection systems, and medical diagnostic tools. 
+                        I hold the SFU MSE Leadership Distinction and have co-authored research on breast cancer detection technology.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>4+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>30K+</h3>
+                        <p>Deployed Units</p>
+                    </div>
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p>Technologies Mastered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Firmware Engineer (Contract)</h3>
+                        <p class="company">Inventu Research Inc. (FlashPark) – via Invictus</p>
+                        <p class="duration">July 2025 – Present</p>
+                        <p class="location">Victoria, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Designing and developing embedded systems for outdoor IoT sensor devices aimed at real-time detection of available parking spaces.</p>
+                        <ul>
+                            <li>Programming STM32 and ESP32 microcontrollers in C/C++, optimizing FreeRTOS architecture for energy efficiency in solar-powered, battery-operated devices</li>
+                            <li>Integrating LTE/5G communication modules and sensors, ensuring reliable low-power operation in outdoor environments</li>
+                            <li>Supporting schematic design and PCB layout using KiCad, along with soldering and assembling prototypes</li>
+                            <li>Assisting with system-level debugging, wireless communication testing, and documentation of design decisions and test results</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Lead Embedded Systems Engineer</h3>
+                        <p class="company">Sepura Home</p>
+                        <p class="duration">June 2021 – Present</p>
+                        <p class="location">Victoria, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Developed RTOS-based firmware for diverse hardware products, including smart buttons and control boards, focusing on ESP32 MCU drivers and scalable software architecture.</p>
+                        <ul>
+                            <li>Developed RTOS-based firmware for diverse hardware products, focusing on ESP32 MCU drivers, off-chip peripherals, and scalable software architecture, significantly enhancing system performance and reliability</li>
+                            <li>Designed and optimized hardware, including schematics, circuits, and PCBs using Circuit Studio (Altium), currently leading efforts to develop cost-effective PCBs</li>
+                            <li>Created middleware libraries to enable seamless over-the-air (OTA) updates and optimized system resources for simultaneous Wi-Fi and Bluetooth operation</li>
+                            <li>Integrated firmware with the Blynk app, managing all device controls via the app for seamless remote operation and implemented Bluetooth button integration</li>
+                            <li>Optimized multi-threaded software for real-time operations across 30,000+ deployed units, ensuring scalability, reliability, and efficient resource utilization</li>
+                            <li>Contributed to backend development, managing databases, crafting SQL queries, and enabling server-side functionalities with JSON, HTTPS, and MQTT protocols</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Hardware Engineer</h3>
+                        <p class="company">Arlo Technologies</p>
+                        <p class="duration">Sept 2018 – Sept 2019</p>
+                        <p class="location">Richmond, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Conducted comprehensive testing and validation of PCBs for multi-sensor integrated systems for smart home automation devices.</p>
+                        <ul>
+                            <li>Conducted comprehensive testing and validation of PCBs for multi-sensor integrated systems, ensuring functionality, reliability, and compliance with design specifications</li>
+                            <li>Designed and implemented rigorous testing procedures, collecting and analyzing performance data to diagnose and resolve hardware issues effectively</li>
+                            <li>Authored detailed technical reports and documentation on PCB performance, reliability metrics, and test outcomes</li>
+                            <li>Developed mathematical models to simulate and predict system performance, optimizing firmware validation and ensuring seamless hardware-software integration</li>
+                            <li>Programmed and implemented the JEITA safety algorithm into LiPo Battery Management Systems (BMS) using C++, improving battery efficiency and safety compliance</li>
+                            <li>Applied Agile methodologies (JIRA) for task management, test automation, and issue tracking, driving efficiency in the development and validation lifecycle</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Firmware Developer (Senior Capstone Project)</h3>
+                        <p class="company">Madkey Solutions</p>
+                        <p class="duration">Jan 2020 – Sept 2020</p>
+                        <p class="location">Surrey, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Programmed multiple smart sensors for real-time sound-wave manipulation on Linux-based OS.</p>
+                        <ul>
+                            <li>Programmed multiple smart sensors (Python, C++) on Linux-based OS for real-time sound-wave manipulation</li>
+                            <li>Developed firmware (C/C++) for Atmega32U4, implementing I²C, SPI, and UART communications</li>
+                            <li>Led Agile-based development and bug reporting, contributing ideas in team design reviews</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Firmware Developer/Research Assistant Intern</h3>
+                        <p class="company">Simon Fraser University Research Lab</p>
+                        <p class="duration">May 2017 – Aug 2017</p>
+                        <p class="location">Surrey, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Research and Development of non-invasive diagnostic tool for breast cancer detection using Near Infrared Sensor.</p>
+                        <ul>
+                            <li>Leveraged C++ and object-oriented programming principles to develop algorithms for reconstructing photothermal images from infrared data</li>
+                            <li>Engineered an advanced MATLAB script for precision analysis of tissue optical properties, contributing to groundbreaking cancer detection research</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Embedded Systems</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="95">
+                            <i class="fas fa-microchip"></i>
+                            <span>ESP32/STM32 MCU</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="95"></div>
+                            </div>
+                            <div class="skill-percentage">95%</div>
+                        </div>
+                        <div class="skill-item" data-skill="90">
+                            <i class="fas fa-route"></i>
+                            <span>FreeRTOS/Zephyr</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="90"></div>
+                            </div>
+                            <div class="skill-percentage">90%</div>
+                        </div>
+                        <div class="skill-item" data-skill="88">
+                            <i class="fas fa-microchip"></i>
+                            <span>ARM Cortex-M</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="88"></div>
+                            </div>
+                            <div class="skill-percentage">88%</div>
+                        </div>
+                        <div class="skill-item" data-skill="82">
+                            <i class="fas fa-microchip"></i>
+                            <span>AVR/PIC MCU</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="82"></div>
+                            </div>
+                            <div class="skill-percentage">82%</div>
+                        </div>
+                        <div class="skill-item" data-skill="92">
+                            <i class="fas fa-tools"></i>
+                            <span>Oscilloscopes</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="92"></div>
+                            </div>
+                            <div class="skill-percentage">92%</div>
+                        </div>
+                        <div class="skill-item" data-skill="85">
+                            <i class="fas fa-tools"></i>
+                            <span>Logic Analyzers</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="85"></div>
+                            </div>
+                            <div class="skill-percentage">85%</div>
+                        </div>
+                        <div class="skill-item" data-skill="87">
+                            <i class="fas fa-plug"></i>
+                            <span>JTAG Debugging</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="87"></div>
+                            </div>
+                            <div class="skill-percentage">87%</div>
+                        </div>
+                        <div class="skill-item" data-skill="78">
+                            <i class="fas fa-linux"></i>
+                            <span>Embedded Linux</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="78"></div>
+                            </div>
+                            <div class="skill-percentage">78%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Hardware & Protocols</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="93">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Altium Designer</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="93"></div>
+                            </div>
+                            <div class="skill-percentage">93%</div>
+                        </div>
+                        <div class="skill-item" data-skill="89">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>KiCad PCB Design</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="89"></div>
+                            </div>
+                            <div class="skill-percentage">89%</div>
+                        </div>
+                        <div class="skill-item" data-skill="96">
+                            <i class="fas fa-network-wired"></i>
+                            <span>SPI/I2C/UART</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="96"></div>
+                            </div>
+                            <div class="skill-percentage">96%</div>
+                        </div>
+                        <div class="skill-item" data-skill="84">
+                            <i class="fas fa-network-wired"></i>
+                            <span>CAN/Ethernet</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="84"></div>
+                            </div>
+                            <div class="skill-percentage">84%</div>
+                        </div>
+                        <div class="skill-item" data-skill="91">
+                            <i class="fas fa-wifi"></i>
+                            <span>MQTT Protocol</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="91"></div>
+                            </div>
+                            <div class="skill-percentage">91%</div>
+                        </div>
+                        <div class="skill-item" data-skill="76">
+                            <i class="fas fa-signal"></i>
+                            <span>LTE/5G Modules</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="76"></div>
+                            </div>
+                            <div class="skill-percentage">76%</div>
+                        </div>
+                        <div class="skill-item" data-skill="88">
+                            <i class="fas fa-battery-full"></i>
+                            <span>Battery Management</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="88"></div>
+                            </div>
+                            <div class="skill-percentage">88%</div>
+                        </div>
+                        <div class="skill-item" data-skill="72">
+                            <i class="fas fa-solar-panel"></i>
+                            <span>Solar Power Systems</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="72"></div>
+                            </div>
+                            <div class="skill-percentage">72%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming & Development</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="97">
+                            <i class="fab fa-cpp"></i>
+                            <span>C/C++</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="97"></div>
+                            </div>
+                            <div class="skill-percentage">97%</div>
+                        </div>
+                        <div class="skill-item" data-skill="83">
+                            <i class="fas fa-code"></i>
+                            <span>Assembly Language</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="83"></div>
+                            </div>
+                            <div class="skill-percentage">83%</div>
+                        </div>
+                        <div class="skill-item" data-skill="91">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="91"></div>
+                            </div>
+                            <div class="skill-percentage">91%</div>
+                        </div>
+                        <div class="skill-item" data-skill="86">
+                            <i class="fas fa-chart-line"></i>
+                            <span>MATLAB</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="86"></div>
+                            </div>
+                            <div class="skill-percentage">86%</div>
+                        </div>
+                        <div class="skill-item" data-skill="79">
+                            <i class="fas fa-database"></i>
+                            <span>SQL Databases</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="79"></div>
+                            </div>
+                            <div class="skill-percentage">79%</div>
+                        </div>
+                        <div class="skill-item" data-skill="94">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git/SVN</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="94"></div>
+                            </div>
+                            <div class="skill-percentage">94%</div>
+                        </div>
+                        <div class="skill-item" data-skill="92">
+                            <i class="fas fa-tasks"></i>
+                            <span>Agile/Waterfall</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="92"></div>
+                            </div>
+                            <div class="skill-percentage">92%</div>
+                        </div>
+                        <div class="skill-item" data-skill="75">
+                            <i class="fas fa-flask"></i>
+                            <span>NI LabVIEW</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="75"></div>
+                            </div>
+                            <div class="skill-percentage">75%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card expandable" data-project="parking">
+                    <div class="project-image">
+                        <i class="fas fa-parking"></i>
+                        <div class="project-overlay">
+                            <button class="expand-btn">
+                                <i class="fas fa-expand"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Smart Parking Detection System</h3>
+                        <p>IoT-based outdoor sensor system for real-time parking space detection using STM32/ESP32 with LTE/5G connectivity and solar power optimization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">STM32</span>
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">FreeRTOS</span>
+                            <span class="tech-tag">LTE/5G</span>
+                            <span class="tech-tag">Solar Power</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Current Project</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Overlay -->
+                    <div class="project-detail-overlay">
+                        <div class="detail-content">
+                            <button class="close-detail">&times;</button>
+                            <h2>Smart Parking Detection System</h2>
+                            <div class="detail-sections">
+                                <div class="detail-section">
+                                    <h4><i class="fas fa-bullseye"></i> Objective</h4>
+                                    <p>Develop an advanced IoT sensor system for real-time parking space detection with energy-efficient operation and reliable wireless communication.</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4><i class="fas fa-cogs"></i> Technical Implementation</h4>
+                                    <ul>
+                                        <li>STM32 and ESP32 microcontroller programming in C/C++</li>
+                                        <li>FreeRTOS architecture optimization for energy efficiency</li>
+                                        <li>LTE/5G communication module integration</li>
+                                        <li>Solar-powered battery management system</li>
+                                        <li>Low-power sensor fusion algorithms</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-section">
+                                    <h4><i class="fas fa-chart-line"></i> Results</h4>
+                                    <p>Successfully deployed in outdoor environments with 99.2% detection accuracy and 6-month battery life with solar charging.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Wireless Smart Button</h3>
+                        <p>Wi-Fi smart button using ESP8266 microcontroller for MQTT-based smart home integration with debounce handling and hardware optimization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP8266</span>
+                            <span class="tech-tag">MQTT</span>
+                            <span class="tech-tag">Wi-Fi</span>
+                            <span class="tech-tag">Smart Home</span>
+                            <span class="tech-tag">IoT</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Dec 2024 - Present</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Keyless Apartment Locking System</h3>
+                        <p>Secure IoT-enabled keyless locking system for apartment doors, integrating Wi-Fi and Bluetooth for remote and local access control. Planning Kickstarter launch.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Wi-Fi</span>
+                            <span class="tech-tag">Bluetooth</span>
+                            <span class="tech-tag">Security</span>
+                            <span class="tech-tag">Mobile App</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">In Design</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Driven Personal Assistant for Health & Fitness</h3>
+                        <p>AI-powered personal assistant to monitor fitness metrics and provide personalized training plans using wearable IoT sensors and AI models.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">IoT Sensors</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Wearables</span>
+                            <span class="tech-tag">Health Tech</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">In Design</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Found Sound JamBox (Senior Capstone)</h3>
+                        <p>Smart sensor system for real-time sound wave manipulation and data logging using Atmega32U4 with I²C, SPI, and UART communications.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Atmega32U4</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Real-time</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Jan-Sept 2020</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Breast Cancer Detection Tool</h3>
+                        <p>Non-invasive diagnostic tool using Near Infrared Sensor for early breast cancer detection with photothermal image reconstruction algorithms.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Medical Research</span>
+                            <span class="tech-tag">Image Processing</span>
+                            <span class="tech-tag">Research Paper</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Research Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        I'm always interested in new opportunities and exciting projects. 
+                        Whether you have a question or just want to say hi, feel free to reach out!
+                    </p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(778) 232-7554</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>bir_ks@outlook.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Victoria, British Columbia, Canada</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Education</h4>
+                                <p>Bachelor of Applied Science - Mechatronic Systems Engineering<br>Simon Fraser University (Sept 2015 – Dec 2020)<br>SFU MSE Leadership Distinction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Birkanwar Singh. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
