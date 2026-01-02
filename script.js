@@ -1750,12 +1750,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
         const phrases = [
-            'Lead Embedded Systems Engineer',
-            'IoT Solution Architect', 
-            'Hardware-Software Wizard',
-            'MCU Programming Expert',
-            'PCB Design Specialist',
-            'Real-time Systems Developer'
+            'Firmware & Hardware Solutions for Consumer Electronics',
+            'ESP32/STM32 Development Services',
+            'Custom PCB Design & Integration',
+            'IoT & Smart Device Development',
+            'Rapid Prototyping to Production',
+            'Reduce Your R&D Time by 60%'
         ];
         
         new Typewriter(typingElement, phrases, {
