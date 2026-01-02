@@ -4,200 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Embedded Systems & Firmware Development Services</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-professional.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Lottie Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <style>
-        /* Failsafe: Hide terminal loader after 3 seconds no matter what happens */
-        #terminal-loader {
-            animation: autoHideLoader 3s forwards;
-        }
-        
-        @keyframes autoHideLoader {
-            0% { opacity: 1; pointer-events: auto; z-index: 10001; }
-            85% { opacity: 1; pointer-events: auto; z-index: 10001; }
-            100% { opacity: 0; pointer-events: none; z-index: -1; }
-        }
-        
-        /* Additional failsafe - hide after 3 seconds using CSS */
-        #terminal-loader.css-hide {
-            display: none !important;
-        }
-        
-        /* Ensure main content is visible and properly positioned */
-        .navbar, .hero, .about, .experience, .skills, .projects, .contact, .footer {
-            position: relative !important;
-            z-index: 1 !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: block !important;
-        }
-        
-        /* Force specific sections to be visible */
-        section#about, section#experience, section#skills, section#projects, section#contact {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        
-        /* Override any animations or transforms that might hide content */
-        .experience, .skills, .projects {
-            transform: none !important;
-            animation: none !important;
-            transition: none !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            position: static !important;
-            height: auto !important;
-            width: 100% !important;
-        }
-        
-        /* Ensure containers and grids are visible */
-        .experience-grid, .skills-grid, .projects-grid {
-            display: grid !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        /* Force all cards to be visible */
-        .experience-card, .skill-category, .project-card {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        /* Force body to be visible */
-        body {
-            overflow-x: hidden !important;
-            overflow-y: auto !important;
-        }
-    </style>
-    <script>
-        // Immediate failsafe - hide loader after 3 seconds no matter what
-        setTimeout(function() {
-            const loader = document.getElementById('terminal-loader');
-            if (loader) {
-                loader.classList.add('css-hide');
-                console.log('Failsafe: Terminal loader hidden by CSS after 3 seconds');
-            }
-            
-            // Ensure main content is visible
-            const sections = document.querySelectorAll('.navbar, .hero, .about, .experience, .skills, .projects, .contact, .footer');
-            sections.forEach(section => {
-                if (section) {
-                    section.style.display = 'block';
-                    section.style.visibility = 'visible';
-                    section.style.opacity = '1';
-                    section.style.position = 'relative';
-                    section.style.zIndex = '1';
-                }
-            });
-            
-            // Also target sections by ID
-            const sectionIds = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
-            sectionIds.forEach(id => {
-                const section = document.getElementById(id);
-                if (section) {
-                    section.style.display = 'block';
-                    section.style.visibility = 'visible';
-                    section.style.opacity = '1';
-                    section.style.position = 'relative';
-                    section.style.zIndex = '1';
-                    console.log(`Section ${id} forced visible`);
-                }
-            });
-            
-            console.log('Main content visibility forced');
-        }, 3000);
-        
-        // Additional immediate fix - run as soon as DOM loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded - forcing section visibility');
-            
-            // Force all sections visible immediately
-            const allSections = document.querySelectorAll('section, .experience, .skills, .projects, .experience-grid, .skills-grid, .projects-grid');
-            allSections.forEach(el => {
-                if (el) {
-                    el.style.display = el.tagName === 'SECTION' ? 'block' : (el.classList.contains('grid') ? 'grid' : 'block');
-                    el.style.visibility = 'visible';
-                    el.style.opacity = '1';
-                    el.style.transform = 'none';
-                    el.style.animation = 'none';
-                    el.style.transition = 'none';
-                    console.log('Made visible:', el.className || el.id || el.tagName);
-                }
-            });
-        });
-    </script>
 </head>
 <body>
-    <!-- Terminal Loading Screen -->
-    <div id="terminal-loader">
-        <div class="terminal-container">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <div class="terminal-button red"></div>
-                    <div class="terminal-button yellow"></div>
-                    <div class="terminal-button green"></div>
-                </div>
-                <div class="terminal-title">portfolio.exe - Terminal</div>
-            </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="prompt">root@portfolio:~$</span>
-                    <span class="command">initializing_futuristic_portfolio.sh</span>
-                </div>
-                <div class="terminal-output">
-                    <div class="load-line">Loading quantum processors... <span class="status">✓</span></div>
-                    <div class="load-line">Activating holographic display... <span class="status">✓</span></div>
-                    <div class="load-line">Establishing neural networks... <span class="status">✓</span></div>
-                    <div class="load-line">Calibrating neon emissions... <span class="status">✓</span></div>
-                    <div class="load-line">Synchronizing glassmorphism... <span class="status">✓</span></div>
-                    <div class="load-line final-line">Portfolio ready. Welcome to the future! <span class="status blink">█</span></div>
-                    <div class="load-line" style="margin-top: 1rem; text-align: center; opacity: 0.7; font-size: 0.9rem;">
-                        <span id="continue-text">Loading complete! Entering in <span id="countdown">2</span>s...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Particle Background -->
-    <div id="particles-background"></div>
-    
-    <!-- Code Rain Background -->
-    <div id="code-rain-background"></div>
-    
-    <!-- Performance Stats -->
-    <div id="perf-stats">
-        <div class="stat-item">
-            <span class="stat-label">FPS:</span>
-            <span class="stat-value" id="fps-counter">60</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-label">Load:</span>
-            <span class="stat-value" id="load-time">0ms</span>
-        </div>
-    </div>
-    
     <!-- Floating Navigation Mini -->
     <div id="floating-nav">
-        <div class="nav-indicator" data-section="home">🏠</div>
-        <div class="nav-indicator" data-section="about">ℹ️</div>
-        <div class="nav-indicator" data-section="services">🛠️</div>
-        <div class="nav-indicator" data-section="expertise">💼</div>
-        <div class="nav-indicator" data-section="portfolio">🚀</div>
-        <div class="nav-indicator" data-section="contact">📧</div>
+        <div class="nav-indicator" data-section="home"></div>
+        <div class="nav-indicator" data-section="about"></div>
+        <div class="nav-indicator" data-section="services"></div>
+        <div class="nav-indicator" data-section="expertise"></div>
+        <div class="nav-indicator" data-section="portfolio"></div>
+        <div class="nav-indicator" data-section="contact"></div>
     </div>
     
     <!-- Theme Toggle Button -->
     <div class="theme-toggle">
-        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
     </div>
     
     <!-- Resume Download Button -->
