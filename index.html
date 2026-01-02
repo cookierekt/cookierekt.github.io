@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <style>
         /* Failsafe: Hide terminal loader after 3 seconds no matter what happens */
         #terminal-loader {
@@ -252,7 +254,8 @@
             </div>
             <div class="hero-image">
                 <div class="profile-card">
-                    <div class="profile-image">👨‍💻</div>
+                    <!-- Lottie Animation: Circuit Board / Tech Animation -->
+                    <div id="hero-animation" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </div>
@@ -299,6 +302,9 @@
             <h2 class="section-title">Our Services</h2>
             <div class="experience-grid">
                 <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="firmware"></div>
+                    </div>
                     <div class="experience-header">
                         <h3>Embedded Firmware Development</h3>
                         <p class="company">ESP32 | STM32 | ARM Cortex-M | AVR</p>
@@ -317,6 +323,9 @@
                 </div>
 
                 <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="pcb"></div>
+                    </div>
                     <div class="experience-header">
                         <h3>PCB Design & Hardware Integration</h3>
                         <p class="company">Altium Designer | KiCad | Circuit Studio</p>
@@ -335,6 +344,9 @@
                 </div>
 
                 <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="iot"></div>
+                    </div>
                     <div class="experience-header">
                         <h3>IoT & Consumer Electronics Solutions</h3>
                         <p class="company">Rapid Prototyping to Production</p>
@@ -353,6 +365,9 @@
                 </div>
 
                 <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="consulting"></div>
+                    </div>
                     <div class="experience-header">
                         <h3>Rapid Development & Consulting</h3>
                         <p class="company">Accelerate Your Time to Market</p>
