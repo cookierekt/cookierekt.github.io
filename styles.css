@@ -125,6 +125,16 @@ img {
     opacity: 0.3;
 }
 
+/* Three.js 3D Canvas */
+#three-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
 /* Binary Rain Effect */
 .binary-rain {
     position: absolute;

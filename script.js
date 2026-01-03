@@ -1718,6 +1718,148 @@ function initSmoothScrolling() {
     console.log('✅ Smooth scrolling initialized');
 }
 
+// Three.js 3D Particle Network
+class ThreeJSParticleNetwork {
+    constructor() {
+        this.canvas = document.getElementById('three-canvas');
+        if (!this.canvas || typeof THREE === 'undefined') return;
+
+        this.init();
+        this.createParticles();
+        this.animate();
+        this.handleResize();
+    }
+
+    init() {
+        // Scene setup
+        this.scene = new THREE.Scene();
+
+        // Camera
+        this.camera = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
+        this.camera.position.z = 50;
+
+        // Renderer
+        this.renderer = new THREE.WebGLRenderer({
+            canvas: this.canvas,
+            alpha: true,
+            antialias: true
+        });
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setPixelRatio(window.devicePixelRatio);
+    }
+
+    createParticles() {
+        const geometry = new THREE.BufferGeometry();
+        const particleCount = 200;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        // Create particles in 3D space
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            positions[i] = (Math.random() - 0.5) * 100;
+            positions[i + 1] = (Math.random() - 0.5) * 100;
+            positions[i + 2] = (Math.random() - 0.5) * 100;
+
+            // Blue color palette
+            colors[i] = 0.15;      // R
+            colors[i + 1] = 0.39;  // G
+            colors[i + 2] = 0.92;  // B
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        // Material
+        const material = new THREE.PointsMaterial({
+            size: 0.8,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.8,
+            sizeAttenuation: true
+        });
+
+        // Create particle system
+        this.particles = new THREE.Points(geometry, material);
+        this.scene.add(this.particles);
+
+        // Create connections between nearby particles
+        this.createConnections(positions);
+    }
+
+    createConnections(positions) {
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0x2563eb,
+            transparent: true,
+            opacity: 0.15
+        });
+
+        const lineGeometry = new THREE.BufferGeometry();
+        const linePositions = [];
+
+        // Connect particles within distance
+        for (let i = 0; i < positions.length; i += 3) {
+            for (let j = i + 3; j < positions.length; j += 3) {
+                const dx = positions[i] - positions[j];
+                const dy = positions[i + 1] - positions[j + 1];
+                const dz = positions[i + 2] - positions[j + 2];
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                if (distance < 15) {
+                    linePositions.push(positions[i], positions[i + 1], positions[i + 2]);
+                    linePositions.push(positions[j], positions[j + 1], positions[j + 2]);
+                }
+            }
+        }
+
+        lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+        this.lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+        this.scene.add(this.lines);
+    }
+
+    animate() {
+        requestAnimationFrame(() => this.animate());
+
+        // Rotate particle network slowly
+        if (this.particles) {
+            this.particles.rotation.y += 0.0005;
+            this.particles.rotation.x += 0.0002;
+        }
+
+        if (this.lines) {
+            this.lines.rotation.y += 0.0005;
+            this.lines.rotation.x += 0.0002;
+        }
+
+        // Mouse parallax effect
+        if (this.mouse) {
+            this.camera.position.x += (this.mouse.x * 5 - this.camera.position.x) * 0.05;
+            this.camera.position.y += (this.mouse.y * 5 - this.camera.position.y) * 0.05;
+        }
+
+        this.renderer.render(this.scene, this.camera);
+    }
+
+    handleResize() {
+        window.addEventListener('resize', () => {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Mouse movement for parallax
+        this.mouse = { x: 0, y: 0 };
+        document.addEventListener('mousemove', (e) => {
+            this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+    }
+}
+
 // Enhanced Technical Background System
 class TechnicalBackgroundAnimator {
     constructor() {
@@ -1940,6 +2082,223 @@ class AnimeAnimationManager {
     }
 }
 
+// GSAP Animations Everywhere
+function initGSAPAnimations() {
+    if (typeof gsap === 'undefined') return;
+
+    // Register ScrollTrigger plugin
+    if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
+    console.log('🎬 Initializing GSAP animations everywhere...');
+
+    // Animate all headings on scroll
+    gsap.utils.toArray('h1, h2, h3, h4').forEach((heading, index) => {
+        gsap.from(heading, {
+            scrollTrigger: {
+                trigger: heading,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: 'power3.out',
+            delay: index * 0.05
+        });
+    });
+
+    // Animate all paragraphs
+    gsap.utils.toArray('p').forEach((p, index) => {
+        gsap.from(p, {
+            scrollTrigger: {
+                trigger: p,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            delay: index * 0.02
+        });
+    });
+
+    // Animate all buttons with bounce
+    gsap.utils.toArray('.btn').forEach(btn => {
+        // Entrance animation
+        gsap.from(btn, {
+            scrollTrigger: {
+                trigger: btn,
+                start: 'top 90%'
+            },
+            scale: 0,
+            rotation: -180,
+            duration: 1.2,
+            ease: 'elastic.out(1, 0.5)'
+        });
+
+        // Hover animation
+        btn.addEventListener('mouseenter', () => {
+            gsap.to(btn, {
+                scale: 1.1,
+                boxShadow: '0 10px 30px rgba(37, 99, 235, 0.4)',
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, {
+                scale: 1,
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                duration: 0.3
+            });
+        });
+    });
+
+    // Animate all cards with stagger
+    gsap.utils.toArray('.experience-card, .project-card, .highlight-box').forEach((card, index) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%'
+            },
+            opacity: 0,
+            y: 100,
+            rotation: 5,
+            duration: 1,
+            delay: index * 0.1,
+            ease: 'power3.out'
+        });
+
+        // Card hover effect
+        card.addEventListener('mouseenter', () => {
+            gsap.to(card, {
+                y: -15,
+                scale: 1.02,
+                boxShadow: '0 25px 50px rgba(37, 99, 235, 0.2)',
+                duration: 0.4,
+                ease: 'power2.out'
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                y: 0,
+                scale: 1,
+                duration: 0.4
+            });
+        });
+    });
+
+    // Animate section dividers
+    gsap.utils.toArray('.section-divider').forEach(divider => {
+        gsap.from(divider, {
+            scrollTrigger: {
+                trigger: divider,
+                start: 'top 90%'
+            },
+            scaleX: 0,
+            opacity: 0,
+            duration: 1.5,
+            ease: 'power2.out'
+        });
+    });
+
+    // Animate icons with rotation
+    gsap.utils.toArray('.service-icon, .fas, .fab').forEach((icon, index) => {
+        if (!icon.closest('.nav-link')) {  // Skip nav icons
+            gsap.from(icon, {
+                scrollTrigger: {
+                    trigger: icon,
+                    start: 'top 90%'
+                },
+                scale: 0,
+                rotation: 720,
+                opacity: 0,
+                duration: 1,
+                delay: index * 0.05,
+                ease: 'back.out(1.7)'
+            });
+        }
+    });
+
+    // Parallax effect on hero section
+    gsap.to('.hero-content', {
+        scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+        },
+        y: 150,
+        opacity: 0.5
+    });
+
+    // Floating animation for 3D cube
+    gsap.to('.cube', {
+        y: 20,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut'
+    });
+
+    // Animate list items
+    gsap.utils.toArray('li').forEach((li, index) => {
+        gsap.from(li, {
+            scrollTrigger: {
+                trigger: li,
+                start: 'top 90%'
+            },
+            x: -30,
+            opacity: 0,
+            duration: 0.6,
+            delay: index * 0.05
+        });
+    });
+
+    // Pulse animation for stats
+    gsap.utils.toArray('.stat h3').forEach(stat => {
+        gsap.to(stat, {
+            scale: 1.1,
+            duration: 1,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+        });
+    });
+
+    // Animate skill bars with custom easing
+    gsap.utils.toArray('.skill-bar').forEach(bar => {
+        const width = bar.dataset.width || '0';
+        gsap.from(bar, {
+            scrollTrigger: {
+                trigger: bar,
+                start: 'top 85%'
+            },
+            width: 0,
+            duration: 2,
+            ease: 'power4.out'
+        });
+    });
+
+    // Text reveal animation for section titles
+    gsap.utils.toArray('.section-title').forEach(title => {
+        gsap.from(title, {
+            scrollTrigger: {
+                trigger: title,
+                start: 'top 80%'
+            },
+            clipPath: 'inset(0 100% 0 0)',
+            duration: 1.5,
+            ease: 'power4.out'
+        });
+    });
+
+    console.log('✅ GSAP animations initialized everywhere!');
+}
+
 // Initialize all enhancements
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded - initializing portfolio...');
@@ -1968,8 +2327,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize interactive skill progress bars
     new SkillProgressBars();
 
+    // Initialize Three.js 3D particle network
+    new ThreeJSParticleNetwork();
+
     // Initialize technical background animations
     new TechnicalBackgroundAnimator();
+
+    // Initialize GSAP animations everywhere
+    initGSAPAnimations();
 
     // Initialize Anime.js animations
     const animeManager = new AnimeAnimationManager();
