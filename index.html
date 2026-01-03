@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Lottie Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <!-- Anime.js Animation Library -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/lib/anime.min.js"></script>
 </head>
 <body>
     <!-- Floating Navigation Mini -->
@@ -80,8 +80,19 @@
             </div>
             <div class="hero-image">
                 <div class="profile-card">
-                    <!-- Lottie Animation: Circuit Board / Tech Animation -->
-                    <div id="hero-animation" style="width: 100%; height: 100%;"></div>
+                    <!-- 3D Cube Animation -->
+                    <div class="cube-container">
+                        <div class="cube">
+                            <div class="cube-face front"></div>
+                            <div class="cube-face back"></div>
+                            <div class="cube-face right"></div>
+                            <div class="cube-face left"></div>
+                            <div class="cube-face top"></div>
+                            <div class="cube-face bottom"></div>
+                        </div>
+                    </div>
+                    <!-- Particle Animation Container -->
+                    <div class="particles-container"></div>
                 </div>
             </div>
         </div>
@@ -129,7 +140,7 @@
             <div class="experience-grid">
                 <div class="experience-card">
                     <div class="service-icon-container">
-                        <div class="service-animation" data-animation="firmware"></div>
+                        <i class="fas fa-microchip service-icon" data-icon="firmware"></i>
                     </div>
                     <div class="experience-header">
                         <h3>Embedded Firmware Development</h3>
@@ -150,7 +161,7 @@
 
                 <div class="experience-card">
                     <div class="service-icon-container">
-                        <div class="service-animation" data-animation="pcb"></div>
+                        <i class="fas fa-wave-square service-icon" data-icon="pcb"></i>
                     </div>
                     <div class="experience-header">
                         <h3>PCB Design & Hardware Integration</h3>
@@ -171,7 +182,7 @@
 
                 <div class="experience-card">
                     <div class="service-icon-container">
-                        <div class="service-animation" data-animation="iot"></div>
+                        <i class="fas fa-network-wired service-icon" data-icon="iot"></i>
                     </div>
                     <div class="experience-header">
                         <h3>IoT & Consumer Electronics Solutions</h3>
@@ -192,7 +203,7 @@
 
                 <div class="experience-card">
                     <div class="service-icon-container">
-                        <div class="service-animation" data-animation="consulting"></div>
+                        <i class="fas fa-rocket service-icon" data-icon="consulting"></i>
                     </div>
                     <div class="experience-header">
                         <h3>Rapid Development & Consulting</h3>
