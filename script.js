@@ -1718,6 +1718,91 @@ function initSmoothScrolling() {
     console.log('✅ Smooth scrolling initialized');
 }
 
+// Enhanced Technical Background System
+class TechnicalBackgroundAnimator {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.createBinaryElements();
+        this.createCircuitNodes();
+    }
+
+    createBinaryElements() {
+        const binaryContainer = document.querySelector('.binary-rain');
+        if (!binaryContainer) return;
+
+        // Create 30 binary code columns
+        for (let i = 0; i < 30; i++) {
+            const column = document.createElement('div');
+            column.style.cssText = `
+                position: absolute;
+                left: ${(i / 30) * 100}%;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 12px;
+                color: var(--primary-600);
+                opacity: 0.2;
+                white-space: nowrap;
+            `;
+
+            const binaryString = Array(20).fill(0).map(() => Math.random() > 0.5 ? '1' : '0').join(' ');
+            column.textContent = binaryString;
+
+            binaryContainer.appendChild(column);
+
+            // Animate each column
+            anime({
+                targets: column,
+                translateY: ['0vh', '100vh'],
+                opacity: [0, 0.3, 0.3, 0],
+                duration: () => anime.random(15000, 25000),
+                delay: i * 200,
+                loop: true,
+                easing: 'linear'
+            });
+        }
+    }
+
+    createCircuitNodes() {
+        const circuitContainer = document.querySelector('.circuit-grid');
+        if (!circuitContainer) return;
+
+        // Create 15 floating circuit nodes
+        for (let i = 0; i < 15; i++) {
+            const node = document.createElement('div');
+            node.style.cssText = `
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                background: var(--cyan-600);
+                border-radius: 50%;
+                box-shadow: 0 0 10px var(--cyan-600);
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+            `;
+
+            circuitContainer.appendChild(node);
+
+            // Animate node with glow effect
+            anime({
+                targets: node,
+                scale: [1, 1.5, 1],
+                opacity: [0.3, 0.8, 0.3],
+                boxShadow: [
+                    '0 0 10px var(--cyan-600)',
+                    '0 0 20px var(--primary-600)',
+                    '0 0 10px var(--cyan-600)'
+                ],
+                duration: 3000,
+                delay: i * 300,
+                loop: true,
+                easing: 'easeInOutQuad'
+            });
+        }
+    }
+}
+
 // Anime.js Animation System
 class AnimeAnimationManager {
     constructor() {
@@ -1882,6 +1967,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize interactive skill progress bars
     new SkillProgressBars();
+
+    // Initialize technical background animations
+    new TechnicalBackgroundAnimator();
 
     // Initialize Anime.js animations
     const animeManager = new AnimeAnimationManager();
