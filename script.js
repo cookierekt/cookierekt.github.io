@@ -1718,63 +1718,228 @@ function initSmoothScrolling() {
     console.log('✅ Smooth scrolling initialized');
 }
 
+// Lottie Animation System
+class LottieAnimationManager {
+    constructor() {
+        this.animations = new Map();
+        this.animationConfigs = {
+            // Hero section - Circuit board or tech animation
+            hero: 'https://lottie.host/d5c4d0aa-96c4-4b7f-a57f-15e6b3a5e3a8/ZhRV1qQCZC.json',
+
+            // Service animations - Replace these URLs with your chosen animations from LottieFiles
+            firmware: 'https://lottie.host/embed/b2715bc3-9c5f-49c6-ae8a-5e6e5c3e5f5a/4Qd9q0LQXB.json',
+            pcb: 'https://lottie.host/embed/aa3e1b8c-f3d4-4c7a-9c5e-8e7d6c5b4a3b/XyZ123AbCd.json',
+            iot: 'https://lottie.host/embed/cc4f2d9e-h5e6-4d8b-ad6f-9f8e7d6c5b4c/EfG456HiJk.json',
+            consulting: 'https://lottie.host/embed/dd5g3e0f-i6f7-4e9c-be7g-0g9f8e7d6c5d/LmN789OpQr.json',
+
+            // Floating background animations
+            float1: 'https://lottie.host/embed/ee6h4f1g-j7g8-4f0d-cf8h-1h0g9f8e7d6e/StU012VwXy.json',
+            float2: 'https://lottie.host/embed/ff7i5g2h-k8h9-4g1e-dg9i-2i1h0g9f8e7f/ZaB345CdEf.json',
+            float3: 'https://lottie.host/embed/gg8j6h3i-l9i0-4h2f-eh0j-3j2i1h0g9f8g/GhI678JkLm.json'
+        };
+
+        this.init();
+    }
+
+    init() {
+        // Wait for DOM to be fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.loadAnimations());
+        } else {
+            this.loadAnimations();
+        }
+    }
+
+    loadAnimations() {
+        console.log('🎬 Loading Lottie animations...');
+
+        // Load hero animation
+        this.loadHeroAnimation();
+
+        // Load service animations
+        this.loadServiceAnimations();
+
+        // Load floating background animations
+        this.loadFloatingAnimations();
+
+        console.log('✅ Lottie animations initialized');
+    }
+
+    loadHeroAnimation() {
+        const heroContainer = document.getElementById('hero-animation');
+        if (heroContainer && typeof lottie !== 'undefined') {
+            try {
+                const animation = lottie.loadAnimation({
+                    container: heroContainer,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: this.animationConfigs.hero
+                });
+
+                this.animations.set('hero', animation);
+                console.log('✅ Hero animation loaded');
+            } catch (error) {
+                console.error('❌ Failed to load hero animation:', error);
+                // Fallback to emoji if animation fails
+                heroContainer.innerHTML = '<div style="font-size: 10rem; text-align: center; line-height: 1;">🔧⚡</div>';
+            }
+        }
+    }
+
+    loadServiceAnimations() {
+        const serviceAnimations = document.querySelectorAll('.service-animation');
+
+        serviceAnimations.forEach(element => {
+            const animationType = element.dataset.animation;
+            const animationPath = this.animationConfigs[animationType];
+
+            if (animationPath && typeof lottie !== 'undefined') {
+                try {
+                    const animation = lottie.loadAnimation({
+                        container: element,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: animationPath
+                    });
+
+                    this.animations.set(animationType, animation);
+
+                    // Add hover effects
+                    const card = element.closest('.experience-card');
+                    if (card) {
+                        card.addEventListener('mouseenter', () => {
+                            animation.setSpeed(1.5);
+                        });
+
+                        card.addEventListener('mouseleave', () => {
+                            animation.setSpeed(1);
+                        });
+                    }
+                } catch (error) {
+                    console.error(`❌ Failed to load ${animationType} animation:`, error);
+                    // Fallback icons
+                    const fallbackIcons = {
+                        firmware: '💾',
+                        pcb: '🔌',
+                        iot: '🌐',
+                        consulting: '🚀'
+                    };
+                    element.innerHTML = `<div style="font-size: 4rem; text-align: center;">${fallbackIcons[animationType] || '⚙️'}</div>`;
+                }
+            }
+        });
+    }
+
+    loadFloatingAnimations() {
+        // Create floating animation containers
+        const floatingConfigs = [
+            { id: 'float1', class: 'floating-lottie-1' },
+            { id: 'float2', class: 'floating-lottie-2' },
+            { id: 'float3', class: 'floating-lottie-3' }
+        ];
+
+        floatingConfigs.forEach(config => {
+            const container = document.createElement('div');
+            container.className = `floating-lottie ${config.class}`;
+            container.id = `floating-${config.id}`;
+            document.body.appendChild(container);
+
+            if (typeof lottie !== 'undefined') {
+                try {
+                    const animation = lottie.loadAnimation({
+                        container: container,
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: this.animationConfigs[config.id]
+                    });
+
+                    this.animations.set(config.id, animation);
+                } catch (error) {
+                    console.error(`❌ Failed to load ${config.id} animation:`, error);
+                    container.remove();
+                }
+            }
+        });
+    }
+
+    pauseAll() {
+        this.animations.forEach(animation => animation.pause());
+    }
+
+    playAll() {
+        this.animations.forEach(animation => animation.play());
+    }
+
+    stopAll() {
+        this.animations.forEach(animation => animation.stop());
+    }
+}
+
 // Initialize all enhancements
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded - initializing portfolio...');
-    
+
     // Initialize theme toggle
     initThemeToggle();
-    
+
     // Initialize mobile navigation
     initMobileNavigation();
-    
+
     // Initialize smooth scrolling
     initSmoothScrolling();
-    
+
     // Initialize terminal loader
     initTerminalLoader();
-    
+
     // Initialize particle trail
     new ParticleTrail();
-    
+
     // Initialize sound system
     const soundSystem = new SoundSystem();
-    
+
     // Make sound system available globally for terminal sounds
     window.portfolioSounds = soundSystem;
-    
+
     // Initialize interactive skill progress bars
     new SkillProgressBars();
-    
+
+    // Initialize Lottie animations
+    const lottieManager = new LottieAnimationManager();
+    window.lottieManager = lottieManager;
+
     // Initialize typewriter effect
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
         const phrases = [
-            'Lead Embedded Systems Engineer',
-            'IoT Solution Architect', 
-            'Hardware-Software Wizard',
-            'MCU Programming Expert',
-            'PCB Design Specialist',
-            'Real-time Systems Developer'
+            'Firmware & Hardware Solutions for Consumer Electronics',
+            'ESP32/STM32 Development Services',
+            'Custom PCB Design & Integration',
+            'IoT & Smart Device Development',
+            'Rapid Prototyping to Production',
+            'Reduce Your R&D Time by 60%'
         ];
-        
+
         new Typewriter(typingElement, phrases, {
             typeSpeed: 100,
             deleteSpeed: 50,
             pauseTime: 3000
         });
-        
+
         // Add typing sounds to typewriter
         soundSystem.addTypingSounds();
     }
-    
+
     console.log('🚀 Portfolio fully loaded and ready!');
     console.log('🌙 Theme toggle: Working');
     console.log('🔊 Sound system: Default OFF (click sound button to enable)');
     console.log('✨ Particle cursor trail: Active');
     console.log('⌨️  Dynamic typing animation: Active');
     console.log('📊 Interactive skill progress bars: Active');
-    
+    console.log('🎬 Lottie animations: Active');
+
     // Add welcome notification
     setTimeout(() => {
         if (typeof showNotification === 'function') {

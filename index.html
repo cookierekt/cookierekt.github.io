@@ -3,199 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birkanwar Singh - Embedded Systems Engineer</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Professional Embedded Systems & Firmware Development Services</title>
+    <link rel="stylesheet" href="styles-professional.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Failsafe: Hide terminal loader after 3 seconds no matter what happens */
-        #terminal-loader {
-            animation: autoHideLoader 3s forwards;
-        }
-        
-        @keyframes autoHideLoader {
-            0% { opacity: 1; pointer-events: auto; z-index: 10001; }
-            85% { opacity: 1; pointer-events: auto; z-index: 10001; }
-            100% { opacity: 0; pointer-events: none; z-index: -1; }
-        }
-        
-        /* Additional failsafe - hide after 3 seconds using CSS */
-        #terminal-loader.css-hide {
-            display: none !important;
-        }
-        
-        /* Ensure main content is visible and properly positioned */
-        .navbar, .hero, .about, .experience, .skills, .projects, .contact, .footer {
-            position: relative !important;
-            z-index: 1 !important;
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: block !important;
-        }
-        
-        /* Force specific sections to be visible */
-        section#about, section#experience, section#skills, section#projects, section#contact {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        
-        /* Override any animations or transforms that might hide content */
-        .experience, .skills, .projects {
-            transform: none !important;
-            animation: none !important;
-            transition: none !important;
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            position: static !important;
-            height: auto !important;
-            width: 100% !important;
-        }
-        
-        /* Ensure containers and grids are visible */
-        .experience-grid, .skills-grid, .projects-grid {
-            display: grid !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        /* Force all cards to be visible */
-        .experience-card, .skill-category, .project-card {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        
-        /* Force body to be visible */
-        body {
-            overflow-x: hidden !important;
-            overflow-y: auto !important;
-        }
-    </style>
-    <script>
-        // Immediate failsafe - hide loader after 3 seconds no matter what
-        setTimeout(function() {
-            const loader = document.getElementById('terminal-loader');
-            if (loader) {
-                loader.classList.add('css-hide');
-                console.log('Failsafe: Terminal loader hidden by CSS after 3 seconds');
-            }
-            
-            // Ensure main content is visible
-            const sections = document.querySelectorAll('.navbar, .hero, .about, .experience, .skills, .projects, .contact, .footer');
-            sections.forEach(section => {
-                if (section) {
-                    section.style.display = 'block';
-                    section.style.visibility = 'visible';
-                    section.style.opacity = '1';
-                    section.style.position = 'relative';
-                    section.style.zIndex = '1';
-                }
-            });
-            
-            // Also target sections by ID
-            const sectionIds = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
-            sectionIds.forEach(id => {
-                const section = document.getElementById(id);
-                if (section) {
-                    section.style.display = 'block';
-                    section.style.visibility = 'visible';
-                    section.style.opacity = '1';
-                    section.style.position = 'relative';
-                    section.style.zIndex = '1';
-                    console.log(`Section ${id} forced visible`);
-                }
-            });
-            
-            console.log('Main content visibility forced');
-        }, 3000);
-        
-        // Additional immediate fix - run as soon as DOM loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded - forcing section visibility');
-            
-            // Force all sections visible immediately
-            const allSections = document.querySelectorAll('section, .experience, .skills, .projects, .experience-grid, .skills-grid, .projects-grid');
-            allSections.forEach(el => {
-                if (el) {
-                    el.style.display = el.tagName === 'SECTION' ? 'block' : (el.classList.contains('grid') ? 'grid' : 'block');
-                    el.style.visibility = 'visible';
-                    el.style.opacity = '1';
-                    el.style.transform = 'none';
-                    el.style.animation = 'none';
-                    el.style.transition = 'none';
-                    console.log('Made visible:', el.className || el.id || el.tagName);
-                }
-            });
-        });
-    </script>
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
 <body>
-    <!-- Terminal Loading Screen -->
-    <div id="terminal-loader">
-        <div class="terminal-container">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <div class="terminal-button red"></div>
-                    <div class="terminal-button yellow"></div>
-                    <div class="terminal-button green"></div>
-                </div>
-                <div class="terminal-title">portfolio.exe - Terminal</div>
-            </div>
-            <div class="terminal-body">
-                <div class="terminal-line">
-                    <span class="prompt">root@portfolio:~$</span>
-                    <span class="command">initializing_futuristic_portfolio.sh</span>
-                </div>
-                <div class="terminal-output">
-                    <div class="load-line">Loading quantum processors... <span class="status">✓</span></div>
-                    <div class="load-line">Activating holographic display... <span class="status">✓</span></div>
-                    <div class="load-line">Establishing neural networks... <span class="status">✓</span></div>
-                    <div class="load-line">Calibrating neon emissions... <span class="status">✓</span></div>
-                    <div class="load-line">Synchronizing glassmorphism... <span class="status">✓</span></div>
-                    <div class="load-line final-line">Portfolio ready. Welcome to the future! <span class="status blink">█</span></div>
-                    <div class="load-line" style="margin-top: 1rem; text-align: center; opacity: 0.7; font-size: 0.9rem;">
-                        <span id="continue-text">Loading complete! Entering in <span id="countdown">2</span>s...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Particle Background -->
-    <div id="particles-background"></div>
-    
-    <!-- Code Rain Background -->
-    <div id="code-rain-background"></div>
-    
-    <!-- Performance Stats -->
-    <div id="perf-stats">
-        <div class="stat-item">
-            <span class="stat-label">FPS:</span>
-            <span class="stat-value" id="fps-counter">60</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-label">Load:</span>
-            <span class="stat-value" id="load-time">0ms</span>
-        </div>
-    </div>
-    
     <!-- Floating Navigation Mini -->
     <div id="floating-nav">
-        <div class="nav-indicator" data-section="home">🏠</div>
-        <div class="nav-indicator" data-section="about">👤</div>
-        <div class="nav-indicator" data-section="experience">💼</div>
-        <div class="nav-indicator" data-section="skills">⚡</div>
-        <div class="nav-indicator" data-section="projects">🚀</div>
-        <div class="nav-indicator" data-section="contact">📧</div>
+        <div class="nav-indicator" data-section="home"></div>
+        <div class="nav-indicator" data-section="about"></div>
+        <div class="nav-indicator" data-section="services"></div>
+        <div class="nav-indicator" data-section="expertise"></div>
+        <div class="nav-indicator" data-section="portfolio"></div>
+        <div class="nav-indicator" data-section="contact"></div>
     </div>
     
     <!-- Theme Toggle Button -->
     <div class="theme-toggle">
-        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
     </div>
     
     <!-- Resume Download Button -->
@@ -211,14 +39,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">Birkanwar Singh</a>
+                <a href="#home">Embedded Solutions</a>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#expertise" class="nav-link">Expertise</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -234,25 +62,26 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Hi, I'm <span class="highlight">Birkanwar Singh</span>
+                    <span class="highlight">Rapid Embedded Systems Development</span>
                 </h1>
                 <h2 class="hero-subtitle">
-                    <span id="typing-text">Lead Embedded Systems Engineer</span>
+                    <span id="typing-text">Firmware & Hardware Solutions for Consumer Electronics</span>
                     <span class="cursor">|</span>
                 </h2>
                 <p class="hero-description">
-                    Lead Embedded Systems Engineer with 4+ years of experience developing smart IoT solutions and embedded systems. 
-                    Specialized in ESP32/STM32, FreeRTOS/Zephyr, and PCB design with expertise in 
-                    C/C++, wireless communications, and hardware-software integration for 30,000+ deployed units.
+                    Professional embedded systems and firmware development services specializing in rapid implementation
+                    to accelerate your product development cycle. We deliver production-ready solutions for ESP32/STM32 platforms,
+                    custom PCB design, and complete hardware-software integration—reducing your R&D time by up to 60%.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    <a href="#contact" class="btn btn-primary">Request a Quote</a>
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="profile-card">
-                    <div class="profile-image">👨‍💻</div>
+                    <!-- Lottie Animation: Circuit Board / Tech Animation -->
+                    <div id="hero-animation" style="width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </div>
@@ -261,18 +90,18 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title">About Our Services</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        I'm a Mechatronic Systems Engineering graduate from Simon Fraser University with over 4 years of experience 
-                        in embedded systems development. Currently working as Lead Embedded Systems Engineer at Sepura Home, 
-                        I specialize in IoT solutions, RTOS development, and hardware-software integration for 30,000+ deployed units.
+                        We are a specialized embedded systems development firm focused on helping companies accelerate their product development
+                        cycles. With proven experience delivering production-ready firmware and hardware solutions, we help consumer electronics
+                        companies reduce their R&D time while maintaining the highest quality standards.
                     </p>
                     <p>
-                        My expertise includes ESP32/STM32 microcontroller development, FreeRTOS/Zephyr programming, PCB design with Altium/KiCad, 
-                        and implementing complex embedded systems for smart home automation, parking detection systems, and medical diagnostic tools. 
-                        I hold the SFU MSE Leadership Distinction and have co-authored research on breast cancer detection technology.
+                        Our expertise spans ESP32/STM32 microcontroller development, FreeRTOS/Zephyr RTOS programming, PCB design using Altium/KiCad,
+                        and complete hardware-software integration. We've successfully delivered solutions for smart home automation, IoT sensor systems,
+                        parking detection, and medical diagnostic devices—with over 30,000 deployed units in production.
                     </p>
                 </div>
                 <div class="about-stats">
@@ -282,11 +111,103 @@
                     </div>
                     <div class="stat">
                         <h3>30K+</h3>
-                        <p>Deployed Units</p>
+                        <p>Units Deployed</p>
                     </div>
                     <div class="stat">
-                        <h3>10+</h3>
-                        <p>Technologies Mastered</p>
+                        <h3>60%</h3>
+                        <p>R&D Time Reduction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="experience">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="firmware"></div>
+                    </div>
+                    <div class="experience-header">
+                        <h3>Embedded Firmware Development</h3>
+                        <p class="company">ESP32 | STM32 | ARM Cortex-M | AVR</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Custom firmware solutions designed for rapid deployment and long-term reliability.</p>
+                        <ul>
+                            <li>RTOS-based firmware architecture (FreeRTOS, Zephyr)</li>
+                            <li>Low-power optimization for battery-operated devices</li>
+                            <li>Wireless communication integration (Wi-Fi, Bluetooth, LTE/5G)</li>
+                            <li>OTA (Over-The-Air) update systems</li>
+                            <li>Peripheral driver development (SPI, I2C, UART, CAN)</li>
+                            <li>Multi-threaded real-time systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="pcb"></div>
+                    </div>
+                    <div class="experience-header">
+                        <h3>PCB Design & Hardware Integration</h3>
+                        <p class="company">Altium Designer | KiCad | Circuit Studio</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Complete PCB design services from schematic to production-ready boards.</p>
+                        <ul>
+                            <li>Schematic design and circuit optimization</li>
+                            <li>Multi-layer PCB layout and routing</li>
+                            <li>Component selection and BOM optimization</li>
+                            <li>Design for manufacturability (DFM)</li>
+                            <li>Prototype assembly and testing</li>
+                            <li>Hardware debugging with oscilloscopes and logic analyzers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="iot"></div>
+                    </div>
+                    <div class="experience-header">
+                        <h3>IoT & Consumer Electronics Solutions</h3>
+                        <p class="company">Rapid Prototyping to Production</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>End-to-end development for IoT devices and consumer electronics products.</p>
+                        <ul>
+                            <li>Smart home automation systems</li>
+                            <li>Sensor integration and data acquisition</li>
+                            <li>Cloud connectivity (MQTT, HTTPS, WebSocket)</li>
+                            <li>Mobile app integration (Bluetooth, Wi-Fi)</li>
+                            <li>Battery management and solar power systems</li>
+                            <li>Production-ready, scalable solutions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <div class="service-animation" data-animation="consulting"></div>
+                    </div>
+                    <div class="experience-header">
+                        <h3>Rapid Development & Consulting</h3>
+                        <p class="company">Accelerate Your Time to Market</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Expert consulting to reduce development time and avoid costly mistakes.</p>
+                        <ul>
+                            <li>Technical feasibility assessments</li>
+                            <li>Architecture design and system planning</li>
+                            <li>Code review and optimization</li>
+                            <li>Debugging and troubleshooting support</li>
+                            <li>Technology stack selection</li>
+                            <li>Development process optimization</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -294,9 +215,9 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <section id="expertise" class="experience">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title">Our Expertise & Track Record</h2>
             <div class="experience-grid">
                 <div class="experience-card">
                     <div class="experience-header">
@@ -396,7 +317,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title">Technical Capabilities</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Embedded Systems</h3>
@@ -612,9 +533,9 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="portfolio" class="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title">Portfolio & Case Studies</h2>
             <div class="projects-grid">
                 <div class="project-card expandable" data-project="parking">
                     <div class="project-image">
@@ -776,13 +697,14 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title">Start Your Project Today</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's Connect</h3>
+                    <h3>Ready to Accelerate Your Development?</h3>
                     <p>
-                        I'm always interested in new opportunities and exciting projects. 
-                        Whether you have a question or just want to say hi, feel free to reach out!
+                        Get a free consultation to discuss your embedded systems project. We'll assess your requirements,
+                        provide technical recommendations, and deliver a detailed proposal with timeline and cost estimates.
+                        Let's reduce your time to market together.
                     </p>
                     <div class="contact-items">
                         <div class="contact-item">
@@ -807,28 +729,31 @@
                             </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-graduation-cap"></i>
+                            <i class="fas fa-clock"></i>
                             <div>
-                                <h4>Education</h4>
-                                <p>Bachelor of Applied Science - Mechatronic Systems Engineering<br>Simon Fraser University (Sept 2015 – Dec 2020)<br>SFU MSE Leadership Distinction</p>
+                                <h4>Response Time</h4>
+                                <p>We typically respond within 24 hours</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
+                        <input type="text" placeholder="Company Name" required>
+                    </div>
+                    <div class="form-group">
                         <input type="text" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" placeholder="Business Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
+                        <input type="text" placeholder="Project Type (e.g., Firmware Development, PCB Design)" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
+                        <textarea placeholder="Project Details & Requirements" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary">Request Quote</button>
                 </form>
             </div>
         </div>
@@ -838,11 +763,11 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 Birkanwar Singh. All rights reserved.</p>
+                <p>&copy; 2025 Embedded Solutions - Professional Firmware & Hardware Development Services. All rights reserved.</p>
                 <div class="footer-social">
                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:bir_ks@outlook.com" class="social-link"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
