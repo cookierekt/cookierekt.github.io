@@ -1718,26 +1718,9 @@ function initSmoothScrolling() {
     console.log('✅ Smooth scrolling initialized');
 }
 
-// Lottie Animation System
-class LottieAnimationManager {
+// Anime.js Animation System
+class AnimeAnimationManager {
     constructor() {
-        this.animations = new Map();
-        this.animationConfigs = {
-            // Hero section - Technology/Circuit animation
-            hero: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.json',
-
-            // Service animations - Professional tech icons
-            firmware: 'https://lottie.host/28b1462e-db9d-4c56-a7cd-26f1c4964e45/RnGVuFKgbP.json',
-            pcb: 'https://lottie.host/060168ba-9e5f-4979-a1d5-6d3f9c3d8e4a/L1vjNY4T5q.json',
-            iot: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.json',
-            consulting: 'https://lottie.host/28b1462e-db9d-4c56-a7cd-26f1c4964e45/RnGVuFKgbP.json',
-
-            // Floating background animations - Subtle tech elements
-            float1: 'https://lottie.host/060168ba-9e5f-4979-a1d5-6d3f9c3d8e4a/L1vjNY4T5q.json',
-            float2: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.json',
-            float3: 'https://lottie.host/28b1462e-db9d-4c56-a7cd-26f1c4964e45/RnGVuFKgbP.json'
-        };
-
         this.init();
     }
 
@@ -1751,130 +1734,124 @@ class LottieAnimationManager {
     }
 
     loadAnimations() {
-        console.log('🎬 Loading Lottie animations...');
+        console.log('🎬 Loading Anime.js animations...');
 
-        // Load hero animation
-        this.loadHeroAnimation();
+        // Animate service icons
+        this.animateServiceIcons();
 
-        // Load service animations
-        this.loadServiceAnimations();
+        // Create floating particles
+        this.createParticles();
 
-        // Load floating background animations
-        this.loadFloatingAnimations();
+        // Add card hover animations
+        this.setupCardAnimations();
 
-        console.log('✅ Lottie animations initialized');
+        console.log('✅ Anime.js animations initialized');
     }
 
-    loadHeroAnimation() {
-        const heroContainer = document.getElementById('hero-animation');
-        if (heroContainer && typeof lottie !== 'undefined') {
-            try {
-                const animation = lottie.loadAnimation({
-                    container: heroContainer,
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    path: this.animationConfigs.hero
+    animateServiceIcons() {
+        const icons = document.querySelectorAll('.service-icon');
+
+        icons.forEach((icon, index) => {
+            // Initial entrance animation
+            anime({
+                targets: icon,
+                scale: [0, 1],
+                rotate: [0, 360],
+                opacity: [0, 1],
+                duration: 1000,
+                delay: index * 200,
+                easing: 'easeOutElastic(1, .8)'
+            });
+
+            // Continuous floating animation
+            anime({
+                targets: icon,
+                translateY: [-10, 10],
+                duration: 2000,
+                delay: index * 300,
+                loop: true,
+                direction: 'alternate',
+                easing: 'easeInOutSine'
+            });
+
+            // Hover animation
+            const card = icon.closest('.experience-card');
+            if (card) {
+                card.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: icon,
+                        scale: 1.2,
+                        rotate: '+=360',
+                        duration: 600,
+                        easing: 'easeOutElastic(1, .6)'
+                    });
                 });
 
-                this.animations.set('hero', animation);
-                console.log('✅ Hero animation loaded');
-            } catch (error) {
-                console.error('❌ Failed to load hero animation:', error);
-                // Fallback to emoji if animation fails
-                heroContainer.innerHTML = '<div style="font-size: 10rem; text-align: center; line-height: 1;">🔧⚡</div>';
+                card.addEventListener('mouseleave', () => {
+                    anime({
+                        targets: icon,
+                        scale: 1,
+                        duration: 400,
+                        easing: 'easeOutQuad'
+                    });
+                });
             }
+        });
+    }
+
+    createParticles() {
+        const container = document.querySelector('.particles-container');
+        if (!container) return;
+
+        // Create 20 particles
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: linear-gradient(135deg, #2563eb, #0891b2);
+                border-radius: 50%;
+                opacity: 0.6;
+            `;
+            container.appendChild(particle);
+
+            // Random starting position
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            particle.style.left = startX + '%';
+            particle.style.top = startY + '%';
+
+            // Animate particle
+            anime({
+                targets: particle,
+                translateX: () => anime.random(-100, 100),
+                translateY: () => anime.random(-100, 100),
+                scale: [0.5, 1.5],
+                opacity: [0.3, 0.8],
+                duration: () => anime.random(3000, 5000),
+                delay: i * 100,
+                loop: true,
+                direction: 'alternate',
+                easing: 'easeInOutQuad'
+            });
         }
     }
 
-    loadServiceAnimations() {
-        const serviceAnimations = document.querySelectorAll('.service-animation');
+    setupCardAnimations() {
+        const cards = document.querySelectorAll('.experience-card');
 
-        serviceAnimations.forEach(element => {
-            const animationType = element.dataset.animation;
-            const animationPath = this.animationConfigs[animationType];
-
-            if (animationPath && typeof lottie !== 'undefined') {
-                try {
-                    const animation = lottie.loadAnimation({
-                        container: element,
-                        renderer: 'svg',
-                        loop: true,
-                        autoplay: true,
-                        path: animationPath
-                    });
-
-                    this.animations.set(animationType, animation);
-
-                    // Add hover effects
-                    const card = element.closest('.experience-card');
-                    if (card) {
-                        card.addEventListener('mouseenter', () => {
-                            animation.setSpeed(1.5);
-                        });
-
-                        card.addEventListener('mouseleave', () => {
-                            animation.setSpeed(1);
-                        });
-                    }
-                } catch (error) {
-                    console.error(`❌ Failed to load ${animationType} animation:`, error);
-                    // Fallback icons
-                    const fallbackIcons = {
-                        firmware: '💾',
-                        pcb: '🔌',
-                        iot: '🌐',
-                        consulting: '🚀'
-                    };
-                    element.innerHTML = `<div style="font-size: 4rem; text-align: center;">${fallbackIcons[animationType] || '⚙️'}</div>`;
-                }
-            }
+        cards.forEach((card, index) => {
+            // Entrance animation
+            anime({
+                targets: card,
+                translateY: [50, 0],
+                opacity: [0, 1],
+                duration: 800,
+                delay: index * 150,
+                easing: 'easeOutCubic'
+            });
         });
-    }
-
-    loadFloatingAnimations() {
-        // Create floating animation containers
-        const floatingConfigs = [
-            { id: 'float1', class: 'floating-lottie-1' },
-            { id: 'float2', class: 'floating-lottie-2' },
-            { id: 'float3', class: 'floating-lottie-3' }
-        ];
-
-        floatingConfigs.forEach(config => {
-            const container = document.createElement('div');
-            container.className = `floating-lottie ${config.class}`;
-            container.id = `floating-${config.id}`;
-            document.body.appendChild(container);
-
-            if (typeof lottie !== 'undefined') {
-                try {
-                    const animation = lottie.loadAnimation({
-                        container: container,
-                        renderer: 'svg',
-                        loop: true,
-                        autoplay: true,
-                        path: this.animationConfigs[config.id]
-                    });
-
-                    this.animations.set(config.id, animation);
-                } catch (error) {
-                    console.error(`❌ Failed to load ${config.id} animation:`, error);
-                    container.remove();
-                }
-            }
-        });
-    }
-
-    pauseAll() {
-        this.animations.forEach(animation => animation.pause());
-    }
-
-    playAll() {
-        this.animations.forEach(animation => animation.play());
-    }
-
-    stopAll() {
-        this.animations.forEach(animation => animation.stop());
     }
 }
 
@@ -1906,9 +1883,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize interactive skill progress bars
     new SkillProgressBars();
 
-    // Initialize Lottie animations
-    const lottieManager = new LottieAnimationManager();
-    window.lottieManager = lottieManager;
+    // Initialize Anime.js animations
+    const animeManager = new AnimeAnimationManager();
+    window.animeManager = animeManager;
 
     // Initialize typewriter effect
     const typingElement = document.getElementById('typing-text');
