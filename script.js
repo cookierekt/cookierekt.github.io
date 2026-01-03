@@ -1723,19 +1723,19 @@ class LottieAnimationManager {
     constructor() {
         this.animations = new Map();
         this.animationConfigs = {
-            // Hero section - Circuit board or tech animation
-            hero: 'https://lottie.host/d5c4d0aa-96c4-4b7f-a57f-15e6b3a5e3a8/ZhRV1qQCZC.json',
+            // Hero section - Technology/Circuit animation
+            hero: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.json',
 
-            // Service animations - Replace these URLs with your chosen animations from LottieFiles
-            firmware: 'https://lottie.host/embed/b2715bc3-9c5f-49c6-ae8a-5e6e5c3e5f5a/4Qd9q0LQXB.json',
-            pcb: 'https://lottie.host/embed/aa3e1b8c-f3d4-4c7a-9c5e-8e7d6c5b4a3b/XyZ123AbCd.json',
-            iot: 'https://lottie.host/embed/cc4f2d9e-h5e6-4d8b-ad6f-9f8e7d6c5b4c/EfG456HiJk.json',
-            consulting: 'https://lottie.host/embed/dd5g3e0f-i6f7-4e9c-be7g-0g9f8e7d6c5d/LmN789OpQr.json',
+            // Service animations - Professional tech icons
+            firmware: 'https://lottie.host/28b1462e-db9d-4c56-a7cd-26f1c4964e45/RnGVuFKgbP.json',
+            pcb: 'https://lottie.host/060168ba-9e5f-4979-a1d5-6d3f9c3d8e4a/L1vjNY4T5q.json',
+            iot: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.json',
+            consulting: 'https://lottie.host/28b1462e-db9d-4c56-a7cd-26f1c4964e45/RnGVuFKgbP.json',
 
-            // Floating background animations
-            float1: 'https://lottie.host/embed/ee6h4f1g-j7g8-4f0d-cf8h-1h0g9f8e7d6e/StU012VwXy.json',
-            float2: 'https://lottie.host/embed/ff7i5g2h-k8h9-4g1e-dg9i-2i1h0g9f8e7f/ZaB345CdEf.json',
-            float3: 'https://lottie.host/embed/gg8j6h3i-l9i0-4h2f-eh0j-3j2i1h0g9f8g/GhI678JkLm.json'
+            // Floating background animations - Subtle tech elements
+            float1: 'https://lottie.host/060168ba-9e5f-4979-a1d5-6d3f9c3d8e4a/L1vjNY4T5q.json',
+            float2: 'https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.json',
+            float3: 'https://lottie.host/28b1462e-db9d-4c56-a7cd-26f1c4964e45/RnGVuFKgbP.json'
         };
 
         this.init();
