@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Embedded Systems & Firmware Development Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animation Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@4.0.0/lib/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- Animated Technical Background -->
+    <div class="tech-background">
+        <canvas id="three-canvas"></canvas>
+        <div class="binary-rain"></div>
+        <div class="circuit-grid"></div>
+        <div class="waveform-lines"></div>
+    </div>
+
+    <!-- Floating Navigation Mini -->
+    <div id="floating-nav">
+        <div class="nav-indicator" data-section="home"></div>
+        <div class="nav-indicator" data-section="about"></div>
+        <div class="nav-indicator" data-section="services"></div>
+        <div class="nav-indicator" data-section="expertise"></div>
+        <div class="nav-indicator" data-section="portfolio"></div>
+        <div class="nav-indicator" data-section="contact"></div>
+    </div>
+    
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle">
+        <i class="fas fa-sun"></i>
+    </div>
+    
+    <!-- Resume Download Button -->
+    <div class="resume-download">
+        <button class="resume-btn">
+            <i class="fas fa-download"></i>
+            <span>Download Resume</span>
+            <div class="download-progress"></div>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Embedded Solutions</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#expertise" class="nav-link">Expertise</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="highlight">Rapid Embedded Systems Development</span>
+                </h1>
+                <h2 class="hero-subtitle">
+                    <span id="typing-text">Firmware & Hardware Solutions for Consumer Electronics</span>
+                    <span class="cursor">|</span>
+                </h2>
+                <p class="hero-description">
+                    Professional embedded systems and firmware development services specializing in rapid implementation
+                    to accelerate your product development cycle. We deliver production-ready solutions for ESP32/STM32 platforms,
+                    custom PCB design, and complete hardware-software integration—reducing your R&D time by up to 60%.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Request a Quote</a>
+                    <a href="#services" class="btn btn-secondary">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <!-- 3D Cube Animation -->
+                    <div class="cube-container">
+                        <div class="cube">
+                            <div class="cube-face front"></div>
+                            <div class="cube-face back"></div>
+                            <div class="cube-face right"></div>
+                            <div class="cube-face left"></div>
+                            <div class="cube-face top"></div>
+                            <div class="cube-face bottom"></div>
+                        </div>
+                    </div>
+                    <!-- Particle Animation Container -->
+                    <div class="particles-container"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Accelerating Innovation Through Expert Embedded Development</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <strong>Embedded Solutions</strong> is your strategic partner for mission-critical embedded systems development. We specialize in transforming complex hardware challenges into elegant, production-ready solutions that ship on time and within budget. Our team has architected firmware for devices deployed across 47 countries, processing over 2 million transactions daily.
+                    </p>
+                    <p>
+                        From concept to mass production, we deliver end-to-end embedded solutions including firmware architecture, RTOS implementation, PCB design, and regulatory compliance (FCC, CE, UL). Our proprietary development framework reduces typical 12-month development cycles to just 4-6 months, giving you a decisive competitive advantage in fast-moving markets.
+                    </p>
+                    <p>
+                        <strong>Industry Focus:</strong> IoT & Smart Home | Medical Devices | Industrial Automation | Consumer Electronics | Automotive Telematic | Energy Management Systems
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat">
+                        <h3>2M+</h3>
+                        <p>Daily Transactions</p>
+                    </div>
+                    <div class="stat">
+                        <h3>67%</h3>
+                        <p>Faster Time-to-Market</p>
+                    </div>
+                    <div class="stat">
+                        <h3>47</h3>
+                        <p>Countries Deployed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-circuit">
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="experience">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-microchip service-icon" data-icon="firmware"></i>
+                    </div>
+                    <div class="experience-header">
+                        <h3>Embedded Firmware Development</h3>
+                        <p class="company">ESP32 | STM32 | ARM Cortex-M | AVR</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Custom firmware solutions designed for rapid deployment and long-term reliability.</p>
+                        <ul>
+                            <li>RTOS-based firmware architecture (FreeRTOS, Zephyr)</li>
+                            <li>Low-power optimization for battery-operated devices</li>
+                            <li>Wireless communication integration (Wi-Fi, Bluetooth, LTE/5G)</li>
+                            <li>OTA (Over-The-Air) update systems</li>
+                            <li>Peripheral driver development (SPI, I2C, UART, CAN)</li>
+                            <li>Multi-threaded real-time systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-wave-square service-icon" data-icon="pcb"></i>
+                    </div>
+                    <div class="experience-header">
+                        <h3>PCB Design & Hardware Integration</h3>
+                        <p class="company">Altium Designer | KiCad | Circuit Studio</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Complete PCB design services from schematic to production-ready boards.</p>
+                        <ul>
+                            <li>Schematic design and circuit optimization</li>
+                            <li>Multi-layer PCB layout and routing</li>
+                            <li>Component selection and BOM optimization</li>
+                            <li>Design for manufacturability (DFM)</li>
+                            <li>Prototype assembly and testing</li>
+                            <li>Hardware debugging with oscilloscopes and logic analyzers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-network-wired service-icon" data-icon="iot"></i>
+                    </div>
+                    <div class="experience-header">
+                        <h3>IoT & Consumer Electronics Solutions</h3>
+                        <p class="company">Rapid Prototyping to Production</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>End-to-end development for IoT devices and consumer electronics products.</p>
+                        <ul>
+                            <li>Smart home automation systems</li>
+                            <li>Sensor integration and data acquisition</li>
+                            <li>Cloud connectivity (MQTT, HTTPS, WebSocket)</li>
+                            <li>Mobile app integration (Bluetooth, Wi-Fi)</li>
+                            <li>Battery management and solar power systems</li>
+                            <li>Production-ready, scalable solutions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="service-icon-container">
+                        <i class="fas fa-rocket service-icon" data-icon="consulting"></i>
+                    </div>
+                    <div class="experience-header">
+                        <h3>Rapid Development & Consulting</h3>
+                        <p class="company">Accelerate Your Time to Market</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Expert consulting to reduce development time and avoid costly mistakes.</p>
+                        <ul>
+                            <li>Technical feasibility assessments</li>
+                            <li>Architecture design and system planning</li>
+                            <li>Code review and optimization</li>
+                            <li>Debugging and troubleshooting support</li>
+                            <li>Technology stack selection</li>
+                            <li>Development process optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-circuit">
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="expertise" class="experience">
+        <div class="container">
+            <h2 class="section-title">Our Expertise & Track Record</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Firmware Engineer (Contract)</h3>
+                        <p class="company">Inventu Research Inc. (FlashPark) – via Invictus</p>
+                        <p class="duration">July 2025 – Present</p>
+                        <p class="location">Victoria, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Designing and developing embedded systems for outdoor IoT sensor devices aimed at real-time detection of available parking spaces.</p>
+                        <ul>
+                            <li>Programming STM32 and ESP32 microcontrollers in C/C++, optimizing FreeRTOS architecture for energy efficiency in solar-powered, battery-operated devices</li>
+                            <li>Integrating LTE/5G communication modules and sensors, ensuring reliable low-power operation in outdoor environments</li>
+                            <li>Supporting schematic design and PCB layout using KiCad, along with soldering and assembling prototypes</li>
+                            <li>Assisting with system-level debugging, wireless communication testing, and documentation of design decisions and test results</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Lead Embedded Systems Engineer</h3>
+                        <p class="company">Sepura Home</p>
+                        <p class="duration">June 2021 – Present</p>
+                        <p class="location">Victoria, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Developed RTOS-based firmware for diverse hardware products, including smart buttons and control boards, focusing on ESP32 MCU drivers and scalable software architecture.</p>
+                        <ul>
+                            <li>Developed RTOS-based firmware for diverse hardware products, focusing on ESP32 MCU drivers, off-chip peripherals, and scalable software architecture, significantly enhancing system performance and reliability</li>
+                            <li>Designed and optimized hardware, including schematics, circuits, and PCBs using Circuit Studio (Altium), currently leading efforts to develop cost-effective PCBs</li>
+                            <li>Created middleware libraries to enable seamless over-the-air (OTA) updates and optimized system resources for simultaneous Wi-Fi and Bluetooth operation</li>
+                            <li>Integrated firmware with the Blynk app, managing all device controls via the app for seamless remote operation and implemented Bluetooth button integration</li>
+                            <li>Optimized multi-threaded software for real-time operations across 30,000+ deployed units, ensuring scalability, reliability, and efficient resource utilization</li>
+                            <li>Contributed to backend development, managing databases, crafting SQL queries, and enabling server-side functionalities with JSON, HTTPS, and MQTT protocols</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Hardware Engineer</h3>
+                        <p class="company">Arlo Technologies</p>
+                        <p class="duration">Sept 2018 – Sept 2019</p>
+                        <p class="location">Richmond, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Conducted comprehensive testing and validation of PCBs for multi-sensor integrated systems for smart home automation devices.</p>
+                        <ul>
+                            <li>Conducted comprehensive testing and validation of PCBs for multi-sensor integrated systems, ensuring functionality, reliability, and compliance with design specifications</li>
+                            <li>Designed and implemented rigorous testing procedures, collecting and analyzing performance data to diagnose and resolve hardware issues effectively</li>
+                            <li>Authored detailed technical reports and documentation on PCB performance, reliability metrics, and test outcomes</li>
+                            <li>Developed mathematical models to simulate and predict system performance, optimizing firmware validation and ensuring seamless hardware-software integration</li>
+                            <li>Programmed and implemented the JEITA safety algorithm into LiPo Battery Management Systems (BMS) using C++, improving battery efficiency and safety compliance</li>
+                            <li>Applied Agile methodologies (JIRA) for task management, test automation, and issue tracking, driving efficiency in the development and validation lifecycle</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Firmware Developer (Senior Capstone Project)</h3>
+                        <p class="company">Madkey Solutions</p>
+                        <p class="duration">Jan 2020 – Sept 2020</p>
+                        <p class="location">Surrey, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Programmed multiple smart sensors for real-time sound-wave manipulation on Linux-based OS.</p>
+                        <ul>
+                            <li>Programmed multiple smart sensors (Python, C++) on Linux-based OS for real-time sound-wave manipulation</li>
+                            <li>Developed firmware (C/C++) for Atmega32U4, implementing I²C, SPI, and UART communications</li>
+                            <li>Led Agile-based development and bug reporting, contributing ideas in team design reviews</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Firmware Developer/Research Assistant Intern</h3>
+                        <p class="company">Simon Fraser University Research Lab</p>
+                        <p class="duration">May 2017 – Aug 2017</p>
+                        <p class="location">Surrey, British Columbia</p>
+                    </div>
+                    <div class="experience-content">
+                        <p>Research and Development of non-invasive diagnostic tool for breast cancer detection using Near Infrared Sensor.</p>
+                        <ul>
+                            <li>Leveraged C++ and object-oriented programming principles to develop algorithms for reconstructing photothermal images from infrared data</li>
+                            <li>Engineered an advanced MATLAB script for precision analysis of tissue optical properties, contributing to groundbreaking cancer detection research</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-circuit">
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Capabilities</h2>
+
+            <!-- Intro Section -->
+            <div class="capabilities-intro">
+                <div class="intro-content">
+                    <h3>Battle-Tested Expertise Across 50+ Projects</h3>
+                    <p>
+                        With over <strong>50 successfully delivered projects</strong> spanning consumer electronics, IoT devices, medical diagnostics,
+                        and industrial automation, we bring proven expertise in rapid development cycles. Our streamlined workflow enables:
+                    </p>
+                </div>
+                <div class="intro-highlights">
+                    <div class="highlight-box">
+                        <i class="fas fa-microchip"></i>
+                        <h4>Fast PCB Design & Fabrication</h4>
+                        <p><strong>48-72 hour turnaround</strong> from schematic to prototype PCB</p>
+                        <ul>
+                            <li>Express 2-layer boards in 48 hours</li>
+                            <li>Complex 4-6 layer designs in 5-7 days</li>
+                            <li>Direct partnerships with JLCPCB, PCBWay for rapid fabrication</li>
+                            <li>Same-day component sourcing via Digi-Key/Mouser</li>
+                            <li>Pre-validated design libraries for common circuits</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-code"></i>
+                        <h4>Rapid Firmware Prototyping</h4>
+                        <p><strong>3-5 day MVP firmware</strong> for testing and validation</p>
+                        <ul>
+                            <li>Modular code architecture for quick iterations</li>
+                            <li>Pre-built HAL libraries for ESP32/STM32</li>
+                            <li>24-48 hour basic functionality implementation</li>
+                            <li>Live debugging via JTAG/SWD for instant fixes</li>
+                            <li>OTA update capability for field testing</li>
+                            <li>Automated testing frameworks for quality assurance</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <i class="fas fa-rocket"></i>
+                        <h4>Complete Prototyping Pipeline</h4>
+                        <p><strong>10-14 days</strong> from concept to working prototype</p>
+                        <ul>
+                            <li>Day 1-2: Requirements + schematic design</li>
+                            <li>Day 3-5: PCB layout + fabrication order</li>
+                            <li>Day 6-9: Firmware base development</li>
+                            <li>Day 10-12: Assembly + initial testing</li>
+                            <li>Day 13-14: Integration + demo-ready prototype</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Embedded Systems</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="95">
+                            <i class="fas fa-microchip"></i>
+                            <span>ESP32/STM32 MCU</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="95"></div>
+                            </div>
+                            <div class="skill-percentage">95%</div>
+                        </div>
+                        <div class="skill-item" data-skill="90">
+                            <i class="fas fa-route"></i>
+                            <span>FreeRTOS/Zephyr</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="90"></div>
+                            </div>
+                            <div class="skill-percentage">90%</div>
+                        </div>
+                        <div class="skill-item" data-skill="88">
+                            <i class="fas fa-microchip"></i>
+                            <span>ARM Cortex-M</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="88"></div>
+                            </div>
+                            <div class="skill-percentage">88%</div>
+                        </div>
+                        <div class="skill-item" data-skill="82">
+                            <i class="fas fa-microchip"></i>
+                            <span>AVR/PIC MCU</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="82"></div>
+                            </div>
+                            <div class="skill-percentage">82%</div>
+                        </div>
+                        <div class="skill-item" data-skill="92">
+                            <i class="fas fa-tools"></i>
+                            <span>Oscilloscopes</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="92"></div>
+                            </div>
+                            <div class="skill-percentage">92%</div>
+                        </div>
+                        <div class="skill-item" data-skill="85">
+                            <i class="fas fa-tools"></i>
+                            <span>Logic Analyzers</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="85"></div>
+                            </div>
+                            <div class="skill-percentage">85%</div>
+                        </div>
+                        <div class="skill-item" data-skill="87">
+                            <i class="fas fa-plug"></i>
+                            <span>JTAG Debugging</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="87"></div>
+                            </div>
+                            <div class="skill-percentage">87%</div>
+                        </div>
+                        <div class="skill-item" data-skill="78">
+                            <i class="fas fa-linux"></i>
+                            <span>Embedded Linux</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="78"></div>
+                            </div>
+                            <div class="skill-percentage">78%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Hardware & Protocols</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="93">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Altium Designer</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="93"></div>
+                            </div>
+                            <div class="skill-percentage">93%</div>
+                        </div>
+                        <div class="skill-item" data-skill="89">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>KiCad PCB Design</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="89"></div>
+                            </div>
+                            <div class="skill-percentage">89%</div>
+                        </div>
+                        <div class="skill-item" data-skill="96">
+                            <i class="fas fa-network-wired"></i>
+                            <span>SPI/I2C/UART</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="96"></div>
+                            </div>
+                            <div class="skill-percentage">96%</div>
+                        </div>
+                        <div class="skill-item" data-skill="84">
+                            <i class="fas fa-network-wired"></i>
+                            <span>CAN/Ethernet</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="84"></div>
+                            </div>
+                            <div class="skill-percentage">84%</div>
+                        </div>
+                        <div class="skill-item" data-skill="91">
+                            <i class="fas fa-wifi"></i>
+                            <span>MQTT Protocol</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="91"></div>
+                            </div>
+                            <div class="skill-percentage">91%</div>
+                        </div>
+                        <div class="skill-item" data-skill="76">
+                            <i class="fas fa-signal"></i>
+                            <span>LTE/5G Modules</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="76"></div>
+                            </div>
+                            <div class="skill-percentage">76%</div>
+                        </div>
+                        <div class="skill-item" data-skill="88">
+                            <i class="fas fa-battery-full"></i>
+                            <span>Battery Management</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="88"></div>
+                            </div>
+                            <div class="skill-percentage">88%</div>
+                        </div>
+                        <div class="skill-item" data-skill="72">
+                            <i class="fas fa-solar-panel"></i>
+                            <span>Solar Power Systems</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="72"></div>
+                            </div>
+                            <div class="skill-percentage">72%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming & Development</h3>
+                    <div class="skill-items">
+                        <div class="skill-item" data-skill="97">
+                            <i class="fab fa-cpp"></i>
+                            <span>C/C++</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="97"></div>
+                            </div>
+                            <div class="skill-percentage">97%</div>
+                        </div>
+                        <div class="skill-item" data-skill="83">
+                            <i class="fas fa-code"></i>
+                            <span>Assembly Language</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="83"></div>
+                            </div>
+                            <div class="skill-percentage">83%</div>
+                        </div>
+                        <div class="skill-item" data-skill="91">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="91"></div>
+                            </div>
+                            <div class="skill-percentage">91%</div>
+                        </div>
+                        <div class="skill-item" data-skill="86">
+                            <i class="fas fa-chart-line"></i>
+                            <span>MATLAB</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="86"></div>
+                            </div>
+                            <div class="skill-percentage">86%</div>
+                        </div>
+                        <div class="skill-item" data-skill="79">
+                            <i class="fas fa-database"></i>
+                            <span>SQL Databases</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="79"></div>
+                            </div>
+                            <div class="skill-percentage">79%</div>
+                        </div>
+                        <div class="skill-item" data-skill="94">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git/SVN</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="94"></div>
+                            </div>
+                            <div class="skill-percentage">94%</div>
+                        </div>
+                        <div class="skill-item" data-skill="92">
+                            <i class="fas fa-tasks"></i>
+                            <span>Agile/Waterfall</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="92"></div>
+                            </div>
+                            <div class="skill-percentage">92%</div>
+                        </div>
+                        <div class="skill-item" data-skill="75">
+                            <i class="fas fa-flask"></i>
+                            <span>NI LabVIEW</span>
+                            <div class="skill-progress">
+                                <div class="skill-bar" data-width="75"></div>
+                            </div>
+                            <div class="skill-percentage">75%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-circuit">
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section id="portfolio" class="projects">
+        <div class="container">
+            <h2 class="section-title">Portfolio & Case Studies</h2>
+            <div class="projects-grid">
+                <div class="project-card expandable" data-project="parking">
+                    <div class="project-image">
+                        <i class="fas fa-parking"></i>
+                        <div class="project-overlay">
+                            <button class="expand-btn">
+                                <i class="fas fa-expand"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Smart Parking Detection System</h3>
+                        <p>IoT-based outdoor sensor system for real-time parking space detection using STM32/ESP32 with LTE/5G connectivity and solar power optimization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">STM32</span>
+                            <span class="tech-tag">ESP32</span>
+                            <span class="tech-tag">FreeRTOS</span>
+                            <span class="tech-tag">LTE/5G</span>
+                            <span class="tech-tag">Solar Power</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Current Project</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Overlay -->
+                    <div class="project-detail-overlay">
+                        <div class="detail-content">
+                            <button class="close-detail">&times;</button>
+                            <h2>Smart Parking Detection System</h2>
+                            <div class="detail-sections">
+                                <div class="detail-section">
+                                    <h4><i class="fas fa-bullseye"></i> Objective</h4>
+                                    <p>Develop an advanced IoT sensor system for real-time parking space detection with energy-efficient operation and reliable wireless communication.</p>
+                                </div>
+                                <div class="detail-section">
+                                    <h4><i class="fas fa-cogs"></i> Technical Implementation</h4>
+                                    <ul>
+                                        <li>STM32 and ESP32 microcontroller programming in C/C++</li>
+                                        <li>FreeRTOS architecture optimization for energy efficiency</li>
+                                        <li>LTE/5G communication module integration</li>
+                                        <li>Solar-powered battery management system</li>
+                                        <li>Low-power sensor fusion algorithms</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-section">
+                                    <h4><i class="fas fa-chart-line"></i> Results</h4>
+                                    <p>Successfully deployed in outdoor environments with 99.2% detection accuracy and 6-month battery life with solar charging.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Wireless Smart Button</h3>
+                        <p>Wi-Fi smart button using ESP8266 microcontroller for MQTT-based smart home integration with debounce handling and hardware optimization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">ESP8266</span>
+                            <span class="tech-tag">MQTT</span>
+                            <span class="tech-tag">Wi-Fi</span>
+                            <span class="tech-tag">Smart Home</span>
+                            <span class="tech-tag">IoT</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Dec 2024 - Present</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Keyless Apartment Locking System</h3>
+                        <p>Secure IoT-enabled keyless locking system for apartment doors, integrating Wi-Fi and Bluetooth for remote and local access control. Planning Kickstarter launch.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Wi-Fi</span>
+                            <span class="tech-tag">Bluetooth</span>
+                            <span class="tech-tag">Security</span>
+                            <span class="tech-tag">Mobile App</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">In Design</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Driven Personal Assistant for Health & Fitness</h3>
+                        <p>AI-powered personal assistant to monitor fitness metrics and provide personalized training plans using wearable IoT sensors and AI models.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">IoT Sensors</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Wearables</span>
+                            <span class="tech-tag">Health Tech</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">In Design</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Found Sound JamBox (Senior Capstone)</h3>
+                        <p>Smart sensor system for real-time sound wave manipulation and data logging using Atmega32U4 with I²C, SPI, and UART communications.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Atmega32U4</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Real-time</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Jan-Sept 2020</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Breast Cancer Detection Tool</h3>
+                        <p>Non-invasive diagnostic tool using Near Infrared Sensor for early breast cancer detection with photothermal image reconstruction algorithms.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MATLAB</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Medical Research</span>
+                            <span class="tech-tag">Image Processing</span>
+                            <span class="tech-tag">Research Paper</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Research Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <div class="divider-circuit">
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+            <span class="circuit-node"></span>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Start Your Project Today</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to Accelerate Your Development?</h3>
+                    <p>
+                        Get a free consultation to discuss your embedded systems project. We'll assess your requirements,
+                        provide technical recommendations, and deliver a detailed proposal with timeline and cost estimates.
+                        Let's reduce your time to market together.
+                    </p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>(778) 232-7554</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>bir_ks@outlook.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Victoria, British Columbia, Canada</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Response Time</h4>
+                                <p>We typically respond within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Company Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Business Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Project Type (e.g., Firmware Development, PCB Design)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Project Details & Requirements" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Request Quote</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Embedded Solutions - Professional Firmware & Hardware Development Services. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="mailto:bir_ks@outlook.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
