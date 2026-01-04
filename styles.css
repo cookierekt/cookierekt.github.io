@@ -15,55 +15,71 @@ html {
     scroll-padding-top: 100px;
 }
 
-/* CSS Variables - Apple-Inspired Minimal Design */
+/* CSS Variables - Dark Mode (Default) */
 :root {
+    /* Primary Colors - Electric Blue */
+    --primary-600: #2997ff;
+    --primary-700: #0077ed;
+    --primary-500: #3ba1ff;
+    --primary-400: #5ab4ff;
+
+    /* Backgrounds - Dark */
+    --bg-primary: #000000;
+    --bg-secondary: #1c1c1e;
+    --bg-tertiary: #2c2c2e;
+    --bg-card: #1c1c1e;
+    --bg-card-hover: #2c2c2e;
+
+    /* Text - Light on Dark */
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1a6;
+    --text-muted: #6e6e73;
+
+    /* Borders */
+    --border-color: #38383a;
+    --border-color-hover: #545456;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 16px 0 rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 8px 24px 0 rgba(0, 0, 0, 0.7);
+    --shadow-xl: 0 16px 48px 0 rgba(0, 0, 0, 0.8);
+
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Light Mode Theme */
+.light-theme {
     /* Primary Colors - Apple Blue */
     --primary-600: #0071e3;
     --primary-700: #0077ed;
     --primary-500: #06c;
     --primary-400: #2997ff;
-    --primary-100: #d2e9ff;
-    --primary-50: #f5f5f7;
 
-    /* Neutral Colors - Clean Grays */
-    --gray-900: #1d1d1f;
-    --gray-800: #2d2d2f;
-    --gray-700: #424245;
-    --gray-600: #6e6e73;
-    --gray-500: #86868b;
-    --gray-400: #a1a1a6;
-    --gray-300: #d2d2d7;
-    --gray-200: #e8e8ed;
-    --gray-100: #f5f5f7;
-    --gray-50: #fbfbfd;
-
-    /* Backgrounds - Minimal & Clean */
+    /* Backgrounds - Light */
     --bg-primary: #ffffff;
     --bg-secondary: #fbfbfd;
     --bg-tertiary: #f5f5f7;
     --bg-card: #ffffff;
     --bg-card-hover: #f5f5f7;
 
-    /* Text - High Contrast */
-    --text-primary: #1d1d1f;
+    /* Text - Dark on Light */
+    --text-primary: #000000;
     --text-secondary: #6e6e73;
     --text-muted: #86868b;
-    --text-light: #ffffff;
 
-    /* Borders - Subtle */
+    /* Borders */
     --border-color: #d2d2d7;
     --border-color-hover: #86868b;
 
-    /* Shadows - Subtle Apple-style */
+    /* Shadows */
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
     --shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
     --shadow-md: 0 4px 16px 0 rgba(0, 0, 0, 0.12);
     --shadow-lg: 0 8px 24px 0 rgba(0, 0, 0, 0.15);
     --shadow-xl: 0 16px 48px 0 rgba(0, 0, 0, 0.18);
-
-    /* Transitions - Smooth Apple-style */
-    --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* Global Styles */
@@ -81,16 +97,16 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.0834933333;
     color: var(--text-primary);
     letter-spacing: -0.003em;
 }
 
-h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.015em; }
-h2 { font-size: 2.5rem; font-weight: 600; }
-h3 { font-size: 1.75rem; font-weight: 600; }
-h4 { font-size: 1.5rem; font-weight: 600; }
+h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.015em; }
+h2 { font-size: 2.5rem; font-weight: 700; }
+h3 { font-size: 1.75rem; font-weight: 700; }
+h4 { font-size: 1.5rem; font-weight: 700; }
 
 p {
     margin-bottom: 1rem;
@@ -400,10 +416,14 @@ img {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(251, 251, 253, 0.72);
+    background: rgba(28, 28, 30, 0.72);
     backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.light-theme .navbar {
+    background: rgba(251, 251, 253, 0.72);
 }
 
 .nav-container {
