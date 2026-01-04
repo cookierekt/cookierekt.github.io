@@ -1025,30 +1025,54 @@ section {
    ================== */
 .projects {
     background: var(--bg-secondary);
+    padding: 5rem 2rem;
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1400px;
     margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 .project-card {
     background: var(--bg-card);
     border-radius: 18px;
     overflow: hidden;
-    border: none;
+    border: 1px solid var(--border-color);
     transition: var(--transition);
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.light-theme .project-card {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
 }
 
 .project-card:hover {
-    transform: none;
-    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
-    border: none;
-    background: var(--bg-card);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-600);
+}
+
+.light-theme .project-card:hover {
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.08);
 }
 
 .project-image {
