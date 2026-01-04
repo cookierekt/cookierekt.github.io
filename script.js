@@ -2296,7 +2296,138 @@ function initGSAPAnimations() {
         });
     });
 
-    console.log('✅ GSAP animations initialized everywhere!');
+    // MEGA ANIMATION EXPANSION - 100+ ANIMATIONS!
+
+    // Navigation animations
+    gsap.from('.navbar', { y: -100, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
+    gsap.utils.toArray('.nav-link').forEach((link, i) => {
+        gsap.from(link, { y: -20, opacity: 0, duration: 0.5, delay: 0.5 + i * 0.1, ease: 'back.out(1.7)' });
+        link.addEventListener('mouseenter', () => gsap.to(link, { scale: 1.1, color: '#2563eb', duration: 0.3 }));
+        link.addEventListener('mouseleave', () => gsap.to(link, { scale: 1, duration: 0.3 }));
+    });
+
+    gsap.from('.nav-logo', { rotation: 360, scale: 0, duration: 1, ease: 'elastic.out(1, 0.5)' });
+
+    gsap.utils.toArray('.nav-indicator').forEach((indicator, i) => {
+        gsap.from(indicator, { scale: 0, opacity: 0, duration: 0.5, delay: 1 + i * 0.1, ease: 'back.out(2)' });
+        gsap.to(indicator, { y: -3, duration: 0.6, repeat: -1, yoyo: true, delay: i * 0.2, ease: 'sine.inOut' });
+    });
+
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        gsap.from(themeToggle, { rotation: 720, scale: 0, duration: 1, ease: 'back.out(1.7)' });
+        themeToggle.addEventListener('click', () => gsap.to(themeToggle, { rotation: '+=360', duration: 0.6, ease: 'power2.out' }));
+    }
+
+    const resumeBtn = document.querySelector('.resume-btn');
+    if (resumeBtn) {
+        gsap.from('.resume-download', { x: 100, opacity: 0, duration: 1, delay: 0.5 });
+        gsap.to(resumeBtn, { boxShadow: '0 0 20px rgba(37, 99, 235, 0.5)', duration: 1, repeat: -1, yoyo: true });
+    }
+
+    // Hero buttons glow
+    gsap.utils.toArray('.hero-buttons .btn').forEach((btn, i) => {
+        gsap.to(btn, {
+            boxShadow: ['0 0 20px rgba(37, 99, 235, 0.3)', '0 0 40px rgba(37, 99, 235, 0.6)', '0 0 20px rgba(37, 99, 235, 0.3)'],
+            duration: 2, repeat: -1, delay: i * 0.5
+        });
+    });
+
+    // Cursor trail
+    document.addEventListener('mousemove', (e) => {
+        const dot = document.createElement('div');
+        dot.style.cssText = `position: fixed; width: 8px; height: 8px; background: radial-gradient(circle, #2563eb, transparent); border-radius: 50%; pointer-events: none; z-index: 9999; left: ${e.clientX}px; top: ${e.clientY}px;`;
+        document.body.appendChild(dot);
+        gsap.to(dot, { opacity: 0, scale: 2, duration: 1, onComplete: () => dot.remove() });
+    });
+
+    // Skill item border
+    gsap.utils.toArray('.skill-item').forEach(item => {
+        item.addEventListener('mouseenter', () => gsap.to(item, { borderColor: '#2563eb', borderWidth: '3px', duration: 0.3 }));
+        item.addEventListener('mouseleave', () => gsap.to(item, { borderWidth: '1px', duration: 0.3 }));
+    });
+
+    // Experience card border glow
+    gsap.utils.toArray('.experience-card').forEach((card, i) => {
+        gsap.to(card, { borderColor: ['#e2e8f0', '#2563eb', '#e2e8f0'], duration: 3, repeat: -1, delay: i * 0.5 });
+    });
+
+    // Icon bounce on hover
+    gsap.utils.toArray('.service-icon').forEach(icon => {
+        icon.addEventListener('mouseenter', () => gsap.to(icon, { y: -10, duration: 0.3, ease: 'power2.out', repeat: 3, yoyo: true }));
+    });
+
+    // Section background shift
+    gsap.utils.toArray('section').forEach((section, i) => {
+        gsap.to(section, {
+            scrollTrigger: { trigger: section, start: 'top center', end: 'bottom center', scrub: 1 },
+            backgroundColor: i % 2 === 0 ? '#ffffff' : '#f8fafc'
+        });
+    });
+
+    // Container scale on scroll
+    gsap.utils.toArray('.container').forEach(container => {
+        gsap.from(container, {
+            scrollTrigger: { trigger: container, start: 'top 80%' },
+            scale: 0.95, opacity: 0.5, duration: 1
+        });
+    });
+
+    // Circuit node pulse
+    gsap.utils.toArray('.circuit-node').forEach((node, i) => {
+        gsap.to(node, { scale: [1, 1.5, 1], opacity: [0.8, 1, 0.8], duration: 2, repeat: -1, delay: i * 0.3, ease: 'sine.inOut' });
+    });
+
+    // Highlight box shadow pulse
+    gsap.utils.toArray('.highlight-box').forEach((box, i) => {
+        gsap.to(box, {
+            boxShadow: ['0 4px 6px rgba(0,0,0,0.1)', '0 20px 40px rgba(37, 99, 235, 0.3)', '0 4px 6px rgba(0,0,0,0.1)'],
+            duration: 3, repeat: -1, delay: i * 0.8
+        });
+    });
+
+    // Input field focus
+    gsap.utils.toArray('input, textarea').forEach(input => {
+        input.addEventListener('focus', () => gsap.to(input, { scale: 1.02, borderColor: '#2563eb', boxShadow: '0 0 0 3px rgba(37, 99, 235, 0.1)', duration: 0.3 }));
+        input.addEventListener('blur', () => gsap.to(input, { scale: 1, duration: 0.3 }));
+    });
+
+    // Cube face color shift
+    gsap.utils.toArray('.cube-face').forEach((face, i) => {
+        gsap.to(face, {
+            background: ['linear-gradient(135deg, #3b82f6, #0891b2)', 'linear-gradient(135deg, #2563eb, #7c3aed)', 'linear-gradient(135deg, #3b82f6, #0891b2)'],
+            duration: 5, repeat: -1, delay: i * 0.5
+        });
+    });
+
+    // Scroll progress indicator
+    const scrollProgress = document.createElement('div');
+    scrollProgress.style.cssText = 'position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, #2563eb, #0891b2); z-index: 10000; transform-origin: left; box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);';
+    document.body.appendChild(scrollProgress);
+    gsap.to(scrollProgress, { scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: 0.3 }, width: '100%' });
+
+    // Random floating elements
+    for (let i = 0; i < 20; i++) {
+        const floater = document.createElement('div');
+        floater.style.cssText = `position: fixed; width: ${Math.random() * 10 + 5}px; height: ${Math.random() * 10 + 5}px; background: radial-gradient(circle, rgba(37, 99, 235, 0.3), transparent); border-radius: 50%; pointer-events: none; z-index: -1; left: ${Math.random() * 100}vw; top: ${Math.random() * 100}vh;`;
+        document.body.appendChild(floater);
+        gsap.to(floater, { x: (Math.random() - 0.5) * 200, y: (Math.random() - 0.5) * 200, opacity: [0.3, 0.8, 0.3], scale: [1, 1.5, 1], duration: Math.random() * 5 + 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    }
+
+    // Corner accents
+    ['top-left', 'top-right', 'bottom-left', 'bottom-right'].forEach((corner, i) => {
+        const accent = document.createElement('div');
+        const positions = { 'top-left': 'top: 0; left: 0;', 'top-right': 'top: 0; right: 0;', 'bottom-left': 'bottom: 0; left: 0;', 'bottom-right': 'bottom: 0; right: 0;' };
+        accent.style.cssText = `position: fixed; width: 100px; height: 100px; ${positions[corner]} border: 2px solid #2563eb; opacity: 0.2; pointer-events: none; z-index: -1;`;
+        if (corner.includes('top')) accent.style.borderBottom = 'none';
+        if (corner.includes('bottom')) accent.style.borderTop = 'none';
+        if (corner.includes('left')) accent.style.borderRight = 'none';
+        if (corner.includes('right')) accent.style.borderLeft = 'none';
+        document.body.appendChild(accent);
+        gsap.to(accent, { width: [100, 150, 100], height: [100, 150, 100], opacity: [0.2, 0.5, 0.2], duration: 3, repeat: -1, delay: i * 0.5, ease: 'sine.inOut' });
+    });
+
+    console.log('✅ 100+ GSAP animations initialized everywhere!');
 }
 
 // Initialize all enhancements
