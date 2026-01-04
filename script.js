@@ -629,10 +629,8 @@ function initTerminalLoader() {
     function hideLoader() {
         console.log('Hiding terminal loader...');
         
-        // Play terminal completion sound
-        if (window.portfolioSounds) {
-            window.portfolioSounds.playTerminalSound('complete');
-        }
+        
+        
         
         loader.classList.add('fade-out');
         
@@ -895,29 +893,6 @@ function createFloatingParticle(container) {
         particle.remove();
         createFloatingParticle(container);
     }, (20 + Math.random() * 20) * 1000);
-}
-
-// Sound Effects System
-const audioContext = typeof AudioContext !== 'undefined' ? new AudioContext() : null;
-
-function createBeep(frequency = 800, duration = 200, volume = 0.1) {
-    if (!audioContext) return;
-    
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-    oscillator.type = 'sine';
-    
-    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-    gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.01);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration / 1000);
-    
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + duration / 1000);
 }
 
 function playClickSound() {
@@ -1188,7 +1163,6 @@ class Typewriter {
     }
 }
 
-// Sound Effects System
 class SoundSystem {
     constructor() {
         this.enabled = localStorage.getItem('soundEnabled') === 'true'; // Default to OFF
@@ -1244,7 +1218,7 @@ class SoundSystem {
         toggleButton.addEventListener('mouseenter', () => {
             toggleButton.style.transform = 'scale(1.1)';
             toggleButton.style.borderColor = 'var(--neon-blue)';
-            this.playSound('hover');
+            this
         });
         toggleButton.addEventListener('mouseleave', () => {
             toggleButton.style.transform = 'scale(1)';
@@ -1265,7 +1239,7 @@ class SoundSystem {
         const icon = this.toggleButton.querySelector('i');
         icon.className = `fas fa-volume-${this.enabled ? 'up' : 'mute'}`;
         
-        this.playSound('toggle');
+        this
         
         // Visual feedback
         this.toggleButton.style.background = this.enabled ? 
@@ -1282,28 +1256,28 @@ class SoundSystem {
         // Theme toggle sound
         const themeToggle = document.querySelector('.theme-toggle');
         if (themeToggle) {
-            themeToggle.addEventListener('click', () => this.playSound('toggle'));
+            themeToggle.addEventListener('click', () => this);
         }
         
         // Sound toggle - only for the sound button itself  
         const soundToggle = document.getElementById('sound-toggle');
         if (soundToggle) {
-            soundToggle.addEventListener('click', () => this.playSound('toggle'));
+            soundToggle.addEventListener('click', () => this);
         }
         
         // Add some sounds back for testing when enabled
         document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', () => this.playSound('click'));
+            btn.addEventListener('click', () => this);
         });
         
         // Navigation sounds
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => this.playSound('select'));
+            link.addEventListener('click', () => this);
         });
         
         // Skill item clicks
         document.querySelectorAll('.skill-item').forEach(skill => {
-            skill.addEventListener('click', () => this.playSound('select'));
+            skill.addEventListener('click', () => this);
         });
     }
     
@@ -1317,7 +1291,7 @@ class SoundSystem {
         this.playedElements.add(elementId);
         
         // Play the sound
-        this.playSound(type);
+        this
     }
     
     playSound(type) {
@@ -1402,7 +1376,7 @@ class SoundSystem {
     // Method to add typing sounds to the typewriter
     addTypingSounds() {
         const observer = new MutationObserver(() => {
-            this.playSound('typing');
+            this
         });
         
         const typingElement = document.getElementById('typing-text');
