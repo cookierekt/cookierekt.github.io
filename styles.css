@@ -88,22 +88,22 @@ html {
 
 /* Global Styles */
 body {
-    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+    font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.7;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
     line-height: 1.2;
     color: var(--text-primary);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     text-shadow: var(--glow-primary);
 }
 
