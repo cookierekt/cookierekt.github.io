@@ -60,64 +60,72 @@ window.addEventListener('scroll', () => {
 // Scroll animations completely disabled for better text readability
 // All intersection observer animations removed for perfect text legibility
 
-// Enhanced Contact Form with Futuristic Feedback
+// Enhanced Contact Form
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Get form elements
-        const nameInput = this.querySelector('input[type="text"]');
+
+        // Get all form inputs in order
+        const inputs = this.querySelectorAll('input[type="text"]');
+        const companyInput = inputs[0];
+        const nameInput = inputs[1];
         const emailInput = this.querySelector('input[type="email"]');
-        const subjectInput = this.querySelector('input[placeholder="Subject"]');
+        const projectTypeInput = inputs[2];
         const messageTextarea = this.querySelector('textarea');
         const submitButton = this.querySelector('button[type="submit"]');
-        
+
         // Get form values
+        const company = companyInput.value.trim();
         const name = nameInput.value.trim();
         const email = emailInput.value.trim();
-        const subject = subjectInput.value.trim();
+        const projectType = projectTypeInput.value.trim();
         const message = messageTextarea.value.trim();
-        
+
         // Enhanced validation
-        if (!name || !email || !subject || !message) {
-            showFuturisticNotification('⚠️ Please fill in all fields', 'error');
-            shakeInvalidFields([nameInput, emailInput, subjectInput, messageTextarea]);
+        if (!company || !name || !email || !projectType || !message) {
+            alert('Please fill in all fields');
             return;
         }
-        
+
         // Advanced email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            showFuturisticNotification('⚠️ Please enter a valid email address', 'error');
-            shakeInvalidFields([emailInput]);
+            alert('Please enter a valid email address');
             return;
         }
-        
+
+        // Create mailto link with form data
+        const subject = encodeURIComponent(`Project Quote Request: ${projectType} - ${company}`);
+        const body = encodeURIComponent(
+            `Company: ${company}\n` +
+            `Name: ${name}\n` +
+            `Email: ${email}\n` +
+            `Project Type: ${projectType}\n\n` +
+            `Project Details:\n${message}\n\n` +
+            `---\nSubmitted from contact form`
+        );
+
+        const mailtoLink = `mailto:bir_ks@outlook.com?subject=${subject}&body=${body}`;
+
         // Loading state
         submitButton.style.transform = 'scale(0.95)';
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Transmitting...';
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening Email...';
         submitButton.disabled = true;
-        
-        // Simulate form submission with futuristic effect
+
+        // Open mailto link
         setTimeout(() => {
-            showFuturisticNotification('🚀 Message transmitted successfully! I\'ll respond soon.', 'success');
-            this.reset();
-            
-            // Reset button
-            submitButton.innerHTML = 'Send Message';
-            submitButton.disabled = false;
-            submitButton.style.transform = 'scale(1)';
-            
-            // Add success effect to form
-            this.style.transform = 'scale(1.02)';
-            this.style.boxShadow = '0 0 50px rgba(0, 255, 136, 0.3)';
+            window.location.href = mailtoLink;
+
+            // Reset form and button after a delay
             setTimeout(() => {
-                this.style.transform = 'scale(1)';
-                this.style.boxShadow = 'var(--glass-shadow)';
-            }, 300);
-            
-        }, 1500);
+                this.reset();
+                submitButton.innerHTML = 'Request Quote';
+                submitButton.disabled = false;
+                submitButton.style.transform = 'scale(1)';
+                alert('Your email client should open with the message pre-filled. Please send the email to complete your request.');
+            }, 1000);
+        }, 500);
     });
 }
 
