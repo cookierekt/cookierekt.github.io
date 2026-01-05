@@ -671,7 +671,7 @@ img {
 .cube-face.top    { transform: rotateX(90deg) translateZ(100px); }
 .cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
 
-/* Particles Container */
+/* Particles Container - Hidden to prevent visual clutter */
 .particles-container {
     position: absolute;
     top: 0;
@@ -680,6 +680,7 @@ img {
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    display: none;
 }
 
 /* Service Icons */
@@ -1171,6 +1172,55 @@ section {
     background: linear-gradient(135deg, rgba(161, 188, 152, 0.1) 0%, rgba(119, 136, 115, 0.15) 100%);
 }
 
+/* Project Overlay - Hidden by default, shows on hover */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 29, 26, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.light-theme .project-overlay {
+    background: rgba(241, 243, 224, 0.95);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.expand-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-600);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.expand-btn:hover {
+    background: var(--primary-700);
+    transform: translateY(-2px);
+}
+
+.expand-btn i {
+    font-size: 1rem;
+}
+
 .project-image img {
     width: 100%;
     height: 100%;
@@ -1292,6 +1342,122 @@ section {
 
 .project-link:hover {
     color: var(--primary-700);
+}
+
+/* Project Detail Overlay - Modal/Popup */
+.project-detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.project-detail-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.detail-content {
+    background: var(--bg-card);
+    border-radius: 16px;
+    max-width: 900px;
+    width: 100%;
+    padding: 3rem;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-detail {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    line-height: 1;
+}
+
+.close-detail:hover {
+    background: var(--primary-600);
+    color: #ffffff;
+    border-color: var(--primary-600);
+    transform: rotate(90deg);
+}
+
+.detail-content h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    padding-right: 3rem;
+}
+
+.detail-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.detail-section h4 {
+    font-size: 1.25rem;
+    color: var(--primary-600);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.detail-section h4 i {
+    font-size: 1.125rem;
+}
+
+.detail-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.detail-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detail-section li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.detail-section li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-600);
+    font-weight: 600;
 }
 
 /* ==================
